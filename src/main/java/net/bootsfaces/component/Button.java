@@ -49,7 +49,6 @@ import net.bootsfaces.C;
 import net.bootsfaces.component.icon.IconRenderer;
 import net.bootsfaces.listeners.AddResourcesListener;
 import net.bootsfaces.render.H;
-import net.bootsfaces.render.R;
 import net.bootsfaces.render.Tooltip;
 
 /**
@@ -157,7 +156,7 @@ public class Button extends HtmlOutcomeTargetButton {
 			fa = true;
 		}
 		if (icon != null) {
-			Object ialign = attrs.get("icon"+"Align"); // Default Left
+			Object ialign = attrs.get("iconAlign"); // Default Left
 			if (ialign != null && ialign.equals("right")) {
 				rw.writeText(value + " ", null);
 				IconRenderer.encodeIcon(rw, this, icon, fa);

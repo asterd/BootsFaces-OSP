@@ -20,11 +20,14 @@
 package net.bootsfaces.component;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
 
 import net.bootsfaces.C;
+import net.bootsfaces.render.A;
 import net.bootsfaces.render.R;
 import net.bootsfaces.render.Tooltip;
 
@@ -59,7 +62,21 @@ public class GenContainerDiv extends UIComponentBase {
         * </div>
         */
         
-        R.genDivContainer(this,fc);
+        ResponseWriter rw = fc.getResponseWriter();
+		
+		Map<String, Object> attrs = this.getAttributes();
+		
+		String pull = A.asString(attrs.get("pull"));
+		
+		rw.startElement("div", this);
+		rw.writeAttribute("id", this.getClientId(fc), "id");
+		Tooltip.generateTooltip(fc, attrs, rw);
+		if (pull != null && (pull.equals("right") || pull.equals("left"))) {
+			rw.writeAttribute("class", this.getContainerStyles().concat(" ").concat("pull").concat("-").concat(pull),
+					"class");
+		} else {
+			rw.writeAttribute("class", this.getContainerStyles(), "class");
+		}
 
     }
 

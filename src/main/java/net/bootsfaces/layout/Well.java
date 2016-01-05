@@ -20,13 +20,17 @@
 package net.bootsfaces.layout;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
+
 import net.bootsfaces.C;
-import net.bootsfaces.render.RWell;
+import net.bootsfaces.render.A;
 import net.bootsfaces.render.Tooltip;
 
 @ResourceDependencies({
@@ -56,26 +60,22 @@ public class Well extends UIComponentBase {
         if (!isRendered()) {
             return;
         }
-        /*
-         * <div class="well"> || <div class="well well-large">
-         * ...
-         * </div>
-         * Size: large/small
-         */
-        
-        RWell.encBegin(this, context);
-        
-//        ResponseWriter rw = context.getResponseWriter();
-//        
-//        Map<String, Object> attrs = getAttributes();
-//        
-//        String size = A.asString(attrs.get(A.SIZE));
-//        
-//        rw.startElement(H.DIV, this);
-//        rw.writeAttribute(H.ID,getClientId(context),H.ID);
-//        if(size!=null) { rw.writeAttribute(H.CLASS,S.WELL+S.SP+S.WELL+S.HYP+size,H.CLASS); }
-//        rw.writeAttribute(H.CLASS, S.WELL,H.CLASS);
-        
+		ResponseWriter rw = context.getResponseWriter();
+		Map<String, Object> attrs = this.getAttributes();
+		String sz = A.asString(attrs.get("size"));
+		
+		rw.startElement("div", this);
+		rw.writeAttribute("id",this.getClientId(context),"id");
+		String style=(String) attrs.get("style");
+		if (null!=style) {
+			rw.writeAttribute("style", style, null);
+		}
+		String styleClass=(String) attrs.get("styleClass");
+		if (null ==styleClass) styleClass=""; else styleClass=" "+styleClass;
+		Tooltip.generateTooltip(context, attrs, rw);
+		
+		if(sz!=null) { rw.writeAttribute("class", "well well-"+sz+styleClass,"class"); }
+		else           { rw.writeAttribute("class", "well"+styleClass, "class"); }
     }
     
     @Override

@@ -71,14 +71,6 @@ public class Container extends UIComponentBase {
         if (!isRendered()) {
             return;
         }
-        /*
-         * OLD Only Fluid: as of BS3
-         * Now BS3 has again container-fluid
-         * <div class="container">...</div>
-         * or
-         * <div class="container-fluid">...</div>
-         */
-        
         ResponseWriter rw = fc.getResponseWriter();
         
         Map<String, Object> attrs = getAttributes();
@@ -91,9 +83,6 @@ public class Container extends UIComponentBase {
         
         rw.startElement("div", this);
         rw.writeAttribute("id",getClientId(fc),"id");
-//		if (null != container.getDir()) {
-//			rw.writeAttribute("dir", container.getDir(), "dir");
-//		}
         String dir = A.asString(attrs.get("dir"));
         if (null != dir) rw.writeAttribute("dir", dir, "dir");
 

@@ -49,7 +49,6 @@ import net.bootsfaces.component.icon.IconRenderer;
 import net.bootsfaces.listeners.AddResourcesListener;
 import net.bootsfaces.render.A;
 import net.bootsfaces.render.JQ;
-import net.bootsfaces.render.R;
 import net.bootsfaces.render.Tooltip;
 
 /**
