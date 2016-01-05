@@ -21,15 +21,11 @@ package net.bootsfaces.render;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-
-import net.bootsfaces.component.GenContainerDiv;
 
 /**
  * Rendering functions for the core or common to more than one component
@@ -37,12 +33,6 @@ import net.bootsfaces.component.GenContainerDiv;
  * @author thecoder4.eu
  */
 public final class R {
-	// span => col-md-* as of TBS3
-	public static final String COLMD = "col-md-"; // Default as of TBS3
-	// span => col-md-offset-* as of TBS3
-	public static final String OFFSET = "col-md-offset-"; // Default as of TBS3
-	// public static final String ="";
-
 	/**
 	 * Encodes a Column
 	 * 
@@ -75,13 +65,13 @@ public final class R {
 		StringBuilder sb = new StringBuilder();
 		if (span > 0 || offset > 0) {
 			if (span > 0) {
-				sb.append(COLMD).append(span);
+				sb.append("col-md-").append(span);
 			}
 			if (offset > 0) {
 				if (span > 0) {
 					sb.append(" ");
 				}
-				sb.append(OFFSET + offset);
+				sb.append("col-md-offset-" + offset);
 			}
 		}
 
@@ -126,34 +116,6 @@ public final class R {
 
 		if (null != c) {
 			Tooltip.activateTooltips(FacesContext.getCurrentInstance(), c.getAttributes(), c);
-		}
-	}
-
-	/**
-	 * 
-	 * @param c
-	 * @param fc
-	 * @throws IOException
-	 */
-	public static void genDivContainer(GenContainerDiv c, FacesContext fc) throws IOException {
-		/*
-		 * <div class="?"> ... </div>
-		 */
-
-		ResponseWriter rw = fc.getResponseWriter();
-
-		Map<String, Object> attrs = c.getAttributes();
-
-		String pull = A.asString(attrs.get("pull"));
-
-		rw.startElement("div", c);
-		rw.writeAttribute("id", c.getClientId(fc), "id");
-		Tooltip.generateTooltip(fc, attrs, rw);
-		if (pull != null && (pull.equals("right") || pull.equals("left"))) {
-			rw.writeAttribute("class", c.getContainerStyles().concat(" ").concat("pull").concat("-").concat(pull),
-					"class");
-		} else {
-			rw.writeAttribute("class", c.getContainerStyles(), "class");
 		}
 	}
 
@@ -225,62 +187,8 @@ public final class R {
 		}
 	}
 
-	/**
-	 * Finds the Form Id of a component inside a form.
-	 * 
-	 * @param fc
-	 *            FacesContext instance
-	 * @param c
-	 *            UIComponent instance
-	 * @return
-	 */
-	public static String findComponentFormId(FacesContext fc, UIComponent c) {
-		UIComponent parent = c.getParent();
 
-		while (parent != null) {
-			if (parent instanceof UIForm) {
-				return parent.getClientId(fc);
-			}
-			parent = parent.getParent();
-		}
-		return null;
-	}
 
-	/**
-	 * Renders the Childrens of a Component
-	 * 
-	 * @param fc
-	 * @param component
-	 * @throws IOException
-	 */
-	public static void renderChildren(FacesContext fc, UIComponent component) throws IOException {
-		for (Iterator<UIComponent> iterator = component.getChildren().iterator(); iterator.hasNext();) {
-			UIComponent child = (UIComponent) iterator.next();
-			renderChild(fc, child);
-		}
-	}
-
-	/**
-	 * Renders the Child of a Component
-	 * 
-	 * @param fc
-	 * @param child
-	 * @throws IOException
-	 */
-	public static void renderChild(FacesContext fc, UIComponent child) throws IOException {
-		if (!child.isRendered()) {
-			return;
-		}
-
-		child.encodeBegin(fc);
-
-		if (child.getRendersChildren()) {
-			child.encodeChildren(fc);
-		} else {
-			renderChildren(fc, child);
-		}
-		child.encodeEnd(fc);
-	}
 
 	// Suppress default constructor for noninstantiability
 	private R() {

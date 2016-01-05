@@ -20,13 +20,15 @@
 package net.bootsfaces.layout;
 
 import java.io.IOException;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
+
 import net.bootsfaces.C;
-import net.bootsfaces.render.RJumbotron;
 import net.bootsfaces.render.Tooltip;
 
 
@@ -58,13 +60,12 @@ public class Jumbotron extends UIComponentBase {
         if (!isRendered()) {
             return;
         }
-        /*
-         * <div class="jumbotron">
-         * ...
-         * </div>
-         */
-        
-        RJumbotron.encBegin(this, context);
+		ResponseWriter rw = context.getResponseWriter();
+		
+		rw.startElement("div", this);
+		rw.writeAttribute("id",this.getClientId(context),"id");
+		Tooltip.generateTooltip(context, this.getAttributes(), rw);
+		rw.writeAttribute("class", "jumbotron", "class");
     }
     
     @Override

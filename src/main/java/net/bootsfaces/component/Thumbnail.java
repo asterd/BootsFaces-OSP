@@ -24,11 +24,12 @@ import java.io.IOException;
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
+import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
 
 import net.bootsfaces.C;
-import net.bootsfaces.render.RThumbnail;
 import net.bootsfaces.render.Tooltip;
 
 /**
@@ -59,26 +60,35 @@ public class Thumbnail extends UIComponentBase {
 
     @Override
     public void encodeBegin(FacesContext fc) throws IOException {
-        /*
-        *     <div class="thumbnail">
-        <img data-src="holder.js/300x200" alt="...">
-        
-        <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-        
-        </div>
-        */
-        RThumbnail.encBegin(this,fc);
+        UIComponent c = this;
+        if (!c.isRendered()) {
+            return;
+        }
+        ResponseWriter rw = fc.getResponseWriter();
+        rw.startElement("div", c);
+        rw.writeAttribute("id", c.getClientId(fc), "id");
+        Tooltip.generateTooltip(fc, c.getAttributes(), rw);
+        rw.writeAttribute("class", "thumbnail", "class");
     }
     
     @Override
     public void encodeEnd(FacesContext fc) throws IOException {
-        //ResponseWriter rw = fc.getResponseWriter();
-        //rw.endElement(H.DIV);
-        RThumbnail.encEnd(this, fc);
+    	UIComponent c = this;
+        if (!c.isRendered()) {
+            return;
+        }
+        
+        ResponseWriter rw = fc.getResponseWriter();
+        UIComponent capt;
+        capt = c.getFacet("caption");
+        if (capt != null ) {
+            rw.startElement("div", c);
+            rw.writeAttribute("class", "caption", "class");
+            capt.encodeAll(fc);
+            rw.endElement("div");
+        }
+        rw.endElement("div");
+        Tooltip.activateTooltips(fc, c.getAttributes(), c);
     }
 
     @Override

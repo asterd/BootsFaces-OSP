@@ -385,4 +385,25 @@ public class CoreRenderer extends Renderer {
 		return converter;
 	}
 
+	/**
+	 * Finds the Form Id of a component inside a form.
+	 * 
+	 * @param fc
+	 *            FacesContext instance
+	 * @param c
+	 *            UIComponent instance
+	 * @return
+	 */
+	public static String findComponentFormId(FacesContext fc, UIComponent c) {
+		UIComponent parent = c.getParent();
+
+		while (parent != null) {
+			if (parent instanceof UIForm) {
+				return parent.getClientId(fc);
+			}
+			parent = parent.getParent();
+		}
+		return null;
+	}
+
 }

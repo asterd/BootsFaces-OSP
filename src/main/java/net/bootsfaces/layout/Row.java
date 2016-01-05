@@ -66,11 +66,6 @@ public class Row extends UIComponentBase {
 		if (!isRendered()) {
 			return;
 		}
-		/*
-		 * <div class="row"> || <div class="row-fluid"> ... </div> BS3: Always
-		 * fluid
-		 */
-
 		ResponseWriter rw = fc.getResponseWriter();
 
 		Map<String, Object> attrs = getAttributes();
@@ -93,9 +88,6 @@ public class Row extends UIComponentBase {
 		if (null != c) {
 			Tooltip.generateTooltip(FacesContext.getCurrentInstance(), c.getAttributes(), rw);
 		}
-		// if (null != container.getDir()) {
-		// rw.writeAttribute("dir", container.getDir(), "dir");
-		// }
 		String dir = A.asString(c.getAttributes().get("dir"));
 		if (null != dir)
 			rw.writeAttribute("dir", dir, "dir");

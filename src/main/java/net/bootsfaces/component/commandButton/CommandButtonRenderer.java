@@ -94,7 +94,7 @@ public class CommandButtonRenderer extends CoreRenderer {
 
 		if (!type.equals("reset") && !type.equals("button")) {
 			// Check if it is in a Form
-			String formId = R.findComponentFormId(context, component);
+			String formId = findComponentFormId(context, component);
 			if (formId == null) {
 				throw new FacesException("CommandButton : '" + CID + "' must be inside a form element");
 			}
