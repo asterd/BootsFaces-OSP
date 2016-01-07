@@ -64,6 +64,8 @@ public class DataTableRenderer extends CoreRenderer {
 
 		// put custom code here
 		// Simple demo widget that simply renders every attribute value
+		rw.startElement("div", dataTable);
+		rw.writeAttribute("class", "table-responsive", "class");
 		rw.startElement("table", dataTable);
 		rw.writeAttribute("id", clientId, "id");
 
@@ -80,6 +82,7 @@ public class DataTableRenderer extends CoreRenderer {
 		generateHeader(context, dataTable, rw);
 		generateBody(context, dataTable, rw);
 		generateFooter(context, dataTable, rw);
+		rw.endElement("div");
 	}
 
 	private void generateFooter(FacesContext context, DataTable dataTable, ResponseWriter rw) throws IOException {
