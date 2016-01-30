@@ -2052,25 +2052,20 @@
   <tag>
     <tag-name>buttonGroup</tag-name>
     <component>
-      <component-type>net.bootsfaces.component.ButtonGroup</component-type>
+      <component-type>net.bootsfaces.component.buttonGroup.ButtonGroup</component-type>
     </component>
-    <attribute>
-      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-      <name>id</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-      <name>rendered</name>
-      <required>false</required>
-      <type>java.lang.Boolean</type>
-    </attribute>
+    
     <attribute>
       <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
       <name>binding</name>
       <required>false</required>
       <type>javax.faces.component.UIComponent</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+      <name>id</name>
+      <required>false</required>
+      <type>java.lang.String</type>
     </attribute>
     <attribute>
       <description><![CDATA[Orientation can be horizontal(default) or vertical.]]></description>
@@ -2079,52 +2074,8 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Size of the grouped Buttons, can be lg, sm or xs.]]></description>
-      <name>size</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[The text of the tooltip.]]></description>
-      <name>tooltip</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-hide</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <!-- put more tooltip attributes here -->
-
-  </tag>
-  <tag>
-    <tag-name>buttonToolbar</tag-name>
-    <component>
-      <component-type>net.bootsfaces.component.ButtonToolbar</component-type>
-    </component>
-    <attribute>
-      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-      <name>id</name>
+      <description><![CDATA[Can be right or left. Pulls the element right or left.]]></description>
+      <name>pull</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -2132,17 +2083,29 @@
       <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
       <name>rendered</name>
       <required>false</required>
-      <type>java.lang.Boolean</type>
+      <type>Boolean</type>
     </attribute>
     <attribute>
-      <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-      <name>binding</name>
+      <description><![CDATA[Size of the grouped Buttons, can be lg, sm or xs.]]></description>
+      <name>size</name>
       <required>false</required>
-      <type>javax.faces.component.UIComponent</type>
+      <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
+      <description><![CDATA[Inline style of the input element.]]></description>
+      <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>style-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>styleClass</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -2153,26 +2116,183 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
       <required>false</required>
       <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
+      <required>false</required>
+      <type>Integer</type>
     </attribute>
     <attribute>
       <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay-hide</name>
       <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
       <type>java.lang.String</type>
     </attribute>
-    <!-- put more tooltip attributes here -->
-
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
+
+  <tag>
+    <tag-name>buttonToolbar</tag-name>
+    <component>
+      <component-type>net.bootsfaces.component.buttonToolbar.ButtonToolbar</component-type>
+    </component>
+    
+    <attribute>
+      <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+      <name>binding</name>
+      <required>false</required>
+      <type>javax.faces.component.UIComponent</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+      <name>id</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Can be right or left. Pulls the element right or left.]]></description>
+      <name>pull</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+      <name>rendered</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Inline style of the input element.]]></description>
+      <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>style-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>styleClass</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The text of the tooltip.]]></description>
+      <name>tooltip</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-hide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+
   <tag>
     <tag-name>navBar</tag-name>
     <component>
