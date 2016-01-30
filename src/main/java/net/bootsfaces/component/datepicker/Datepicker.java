@@ -51,14 +51,20 @@ import net.bootsfaces.render.Tooltip;
 
 /** This class holds the attributes of &lt;b:datepicker /&gt;. */
 @ResourceDependencies({ @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
-	@ResourceDependency(library = "bsf", name = "css/jq.ui.core.css", target = "head"),
-	@ResourceDependency(library = "bsf", name = "css/jq.ui.theme.css", target = "head"),
-	@ResourceDependency(library = "bsf", name = "css/jq.ui.datepicker.css", target = "head"),
-	@ResourceDependency(library = "bsf", name = "css/bsf.css", target = "head"),
-	/* moved to constructor @ResourceDependency(library = "bsf", name = "jq/ui/datepicker.js", target = "head") */
-	@ResourceDependency(library = "bsf", name = "js/bsf.js", target = "head"),
-	/* moved to constructor @ResourceDependency(library = "bsf", name = "jq/ui/core.js", target = "body"), */
-	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head")
+		@ResourceDependency(library = "bsf", name = "css/jq.ui.core.css", target = "head"),
+		@ResourceDependency(library = "bsf", name = "css/jq.ui.theme.css", target = "head"),
+		@ResourceDependency(library = "bsf", name = "css/jq.ui.datepicker.css", target = "head"),
+		@ResourceDependency(library = "bsf", name = "css/bsf.css", target = "head"),
+		/*
+		 * moved to constructor @ResourceDependency(library = "bsf", name =
+		 * "jq/ui/datepicker.js", target = "head")
+		 */
+		@ResourceDependency(library = "bsf", name = "js/bsf.js", target = "head"),
+		/*
+		 * moved to constructor @ResourceDependency(library = "bsf", name =
+		 * "jq/ui/core.js", target = "body"),
+		 */
+		@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head")
 
 })
 @FacesComponent("net.bootsfaces.component.datepicker.Datepicker")
@@ -81,11 +87,27 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 	 */
 	private String sdf;
 
+	public Locale getSloc() {
+		return sloc;
+	}
+
+	public void setSloc(Locale sloc) {
+		this.sloc = sloc;
+	}
+
+	public String getSdf() {
+		return sdf;
+	}
+
+	public void setSdf(String sdf) {
+		this.sdf = sdf;
+	}
+
 	public Datepicker() {
 		Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
-        AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/jquery.js");
-        AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/ui/core.js");
+		AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/jquery.js");
+		AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/ui/core.js");
 		AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/ui/datepicker.js");
 		FacesContext context = FacesContext.getCurrentInstance();
 		Application app = context.getApplication();
@@ -95,7 +117,8 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 		while (preferredLanguages.hasNext()) {
 			final String jsl = "jq/ui/i18n/datepicker-" + preferredLanguages.next().getLanguage() + ".js";
 			rdp = rh.createResource(jsl, C.BSF_LIBRARY);
-			if (rdp != null) { //rdp is null if the language .js is not present in jar
+			if (rdp != null) { // rdp is null if the language .js is not present
+								// in jar
 				AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, jsl);
 				break;
 			}
@@ -113,7 +136,7 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 			attributes = new AttributeMapWrapper(this, super.getAttributes());
 		return attributes;
 	}
-	
+
 	@Override
 	protected Object getConvertedValue(FacesContext fc, Object sval) throws ConverterException {
 		if (sval == null) {
@@ -147,17 +170,19 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 
 		} catch (ParseException e) {
 			this.setValid(false);
-			throw new ConverterException(getMessage("javax.faces.converter.DateTimeConverter.DATE", val, getSdf(), getLabel(fc)));
+			throw new ConverterException(
+					getMessage("javax.faces.converter.DateTimeConverter.DATE", val, getSdf(), getLabel(fc)));
 		}
 
 		return date;
 	}
-	
+
 	/**
 	 * <p>
 	 * Returns the <code>label</code> property from the specified component.
 	 * </p>
-	 * Simplified and adapted version of the implementation of Mojarra 2.2.8-b02 (see MessageFactory).
+	 * Simplified and adapted version of the implementation of Mojarra 2.2.8-b02
+	 * (see MessageFactory).
 	 *
 	 * @param context
 	 *            - the <code>FacesContext</code> for the current request
@@ -179,14 +204,16 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 	 * <p>
 	 * Creates and returns a FacesMessage for the specified Locale.
 	 * </p>
-	 * Simplified and streamlined version of the implementation of Mojarra 2.2.8-b02 (see MessageFactory).
+	 * Simplified and streamlined version of the implementation of Mojarra
+	 * 2.2.8-b02 (see MessageFactory).
 	 *
 	 * @param messageId
 	 *            - the key of the message in the resource bundle
 	 * @param params
 	 *            - substitution parameters
 	 *
-	 * @return a localized <code>FacesMessage</code> with the severity of FacesMessage.SEVERITY_ERROR
+	 * @return a localized <code>FacesMessage</code> with the severity of
+	 *         FacesMessage.SEVERITY_ERROR
 	 */
 	public static FacesMessage getMessage(String messageId, String... params) {
 		String summary = null;
@@ -199,7 +226,8 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 		// see if we have a user-provided bundle
 		Application app = (FacesContext.getCurrentInstance().getApplication());
 		if (null != (bundleName = app.getMessageBundle())) {
-			if (null != (bundle = ResourceBundle.getBundle(bundleName, locale, Thread.currentThread().getContextClassLoader()))) {
+			if (null != (bundle = ResourceBundle.getBundle(bundleName, locale,
+					Thread.currentThread().getContextClassLoader()))) {
 				// see if we have a hit
 				try {
 					summary = bundle.getString(messageId);
@@ -213,7 +241,8 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 		// we couldn't find a summary in the user-provided bundle
 		if (null == summary) {
 			// see if we have a summary in the app provided bundle
-			bundle = ResourceBundle.getBundle(FacesMessage.FACES_MESSAGES, locale, Thread.currentThread().getContextClassLoader());
+			bundle = ResourceBundle.getBundle(FacesMessage.FACES_MESSAGES, locale,
+					Thread.currentThread().getContextClassLoader());
 			if (null == bundle) {
 				throw new NullPointerException();
 			}
@@ -237,13 +266,15 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 		return ret;
 	}
 
-
 	// Pass the attrs timezone value
 	/*
-	 * public static TimeZone selectTimeZone(Object utz) { java.util.TimeZone selTimeZone; if (utz != null) { if (utz instanceof String) {
-	 * selTimeZone = java.util.TimeZone.getTimeZone((String) utz); } else if (utz instanceof java.util.TimeZone) { selTimeZone =
-	 * (java.util.TimeZone) utz; } else { throw new IllegalArgumentException("TimeZone should be either String or java.util.TimeZone"); } }
-	 * else { selTimeZone = java.util.TimeZone.getDefault(); } return selTimeZone; }
+	 * public static TimeZone selectTimeZone(Object utz) { java.util.TimeZone
+	 * selTimeZone; if (utz != null) { if (utz instanceof String) { selTimeZone
+	 * = java.util.TimeZone.getTimeZone((String) utz); } else if (utz instanceof
+	 * java.util.TimeZone) { selTimeZone = (java.util.TimeZone) utz; } else {
+	 * throw new IllegalArgumentException(
+	 * "TimeZone should be either String or java.util.TimeZone"); } } else {
+	 * selTimeZone = java.util.TimeZone.getDefault(); } return selTimeZone; }
 	 */
 
 	// Pass facesContext.getViewRoot().getLocale() and attrs locale value
@@ -256,14 +287,13 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 			} else if (loc instanceof java.util.Locale) {
 				selLocale = (java.util.Locale) loc;
 			} else {
-				throw new IllegalArgumentException("Type:" + loc.getClass() + " is not a valid locale type for DatePicker:"
-						+ this.getClientId());
+				throw new IllegalArgumentException(
+						"Type:" + loc.getClass() + " is not a valid locale type for DatePicker:" + this.getClientId());
 			}
 		}
 
 		return selLocale;
 	}
-	
 
 	/**
 	 * Implementation from Apache Commons Lang
@@ -309,9 +339,9 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 		}
 	}
 
-
 	/**
-	 * Selects the Date Pattern to use based on the given Locale if the input format is null
+	 * Selects the Date Pattern to use based on the given Locale if the input
+	 * format is null
 	 * 
 	 * @param locale
 	 *            Locale (may be the result of a call to selectLocale)
@@ -338,407 +368,477 @@ public class Datepicker extends HtmlInputText implements net.bootsfaces.render.I
 		return selFormat;
 	}
 
+    protected enum PropertyKeys {
+binding,
+changeMonth,
+changeYear,
+inline,
+dateFormat,
+dir,
+firstDay,
+lang,
+locale,
+minDate,
+maxDate,
+mode,
+numberOfMonths,
+placeholder,
+showButtonPanel,
+showWeek,
+style,
+styleClass,
+tooltip,
+tooltipContainer,
+tooltipDelay,
+tooltipDelayHide,
+tooltipDelayShow,
+tooltipPosition
+;
 
-	protected enum PropertyKeys {
-		binding, changeMonth, changeYear, firstDay, lang, mode, numberOfMonths, placeholder, showButtonPanel, showWeek, tooltip, tooltipContainer, tooltipDelay, tooltipDelayHide, tooltipDelayShow, tooltipPosition;
+        String toString;
 
-		String toString;
+        PropertyKeys(String toString) {
+            this.toString = toString;
+        }
 
-		PropertyKeys(String toString) {
-			this.toString = toString;
-		}
+        PropertyKeys() {}
 
-		PropertyKeys() {
-		}
-
-		public String toString() {
-			return ((this.toString != null) ? this.toString : super.toString());
-		}
-	}
+        public String toString() {
+            return ((this.toString != null) ? this.toString : super.toString());
+        }
+    }
+	
 
 	/**
-	 * An el expression referring to a server side UIComponent instance in a
-	 * backing bean.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * An el expression referring to a server side UIComponent instance in a backing bean. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public javax.faces.component.UIComponent getBinding() {
-		javax.faces.component.UIComponent value = (javax.faces.component.UIComponent) getStateHelper()
-				.eval(PropertyKeys.binding);
-		return value;
+		javax.faces.component.UIComponent value = (javax.faces.component.UIComponent)getStateHelper().eval(PropertyKeys.binding);
+		return  value;
 	}
-
+	
 	/**
-	 * An el expression referring to a server side UIComponent instance in a
-	 * backing bean.
-	 * <P>
+	 * An el expression referring to a server side UIComponent instance in a backing bean. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setBinding(javax.faces.component.UIComponent _binding) {
-		getStateHelper().put(PropertyKeys.binding, _binding);
-	}
+	    getStateHelper().put(PropertyKeys.binding, _binding);
+    }
+	
 
 	/**
-	 * Boolean value to specify if month selector should be shown.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Boolean value to specify if month selector should be shown. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isChangeMonth() {
-		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.changeMonth, false);
+		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.changeMonth, false);
 		return (boolean) value;
 	}
-
+	
 	/**
-	 * Boolean value to specify if month selector should be shown.
-	 * <P>
+	 * Boolean value to specify if month selector should be shown. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setChangeMonth(boolean _changeMonth) {
-		getStateHelper().put(PropertyKeys.changeMonth, _changeMonth);
-	}
+	    getStateHelper().put(PropertyKeys.changeMonth, _changeMonth);
+    }
+	
 
 	/**
-	 * Boolean value to specify if year selector should be shown.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Boolean value to specify if year selector should be shown. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isChangeYear() {
-		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.changeYear, false);
+		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.changeYear, false);
 		return (boolean) value;
 	}
-
+	
 	/**
-	 * Boolean value to specify if year selector should be shown.
-	 * <P>
+	 * Boolean value to specify if year selector should be shown. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setChangeYear(boolean _changeYear) {
-		getStateHelper().put(PropertyKeys.changeYear, _changeYear);
-	}
+	    getStateHelper().put(PropertyKeys.changeYear, _changeYear);
+    }
+	
 
 	/**
-	 * Set the first day of the week: Sunday is 0, Monday is 1, etc.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public boolean isInline() {
+		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.inline, false);
+		return (boolean) value;
+	}
+	
+	/**
+	 * Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setInline(boolean _inline) {
+	    getStateHelper().put(PropertyKeys.inline, _inline);
+    }
+	
+
+	/**
+	 * Format of the date. I.e. MM/dd/yyyy for the anglo-saxon date format or dd.MM.yyyy for the date format used widely in Europe. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getDateFormat() {
+		String value = (String)getStateHelper().eval(PropertyKeys.dateFormat);
+		return  value;
+	}
+	
+	/**
+	 * Format of the date. I.e. MM/dd/yyyy for the anglo-saxon date format or dd.MM.yyyy for the date format used widely in Europe. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setDateFormat(String _dateFormat) {
+	    getStateHelper().put(PropertyKeys.dateFormat, _dateFormat);
+    }
+	
+
+	/**
+	 * Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getDir() {
+		String value = (String)getStateHelper().eval(PropertyKeys.dir);
+		return  value;
+	}
+	
+	/**
+	 * Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content). <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setDir(String _dir) {
+	    getStateHelper().put(PropertyKeys.dir, _dir);
+    }
+	
+
+	/**
+	 * Set the first day of the week: Sunday is 0, Monday is 1, etc. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getFirstDay() {
-		Integer value = (Integer) getStateHelper().eval(PropertyKeys.firstDay, 0);
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.firstDay, 0);
 		return (int) value;
 	}
-
+	
 	/**
-	 * Set the first day of the week: Sunday is 0, Monday is 1, etc.
-	 * <P>
+	 * Set the first day of the week: Sunday is 0, Monday is 1, etc. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setFirstDay(int _firstDay) {
-		getStateHelper().put(PropertyKeys.firstDay, _firstDay);
-	}
+	    getStateHelper().put(PropertyKeys.firstDay, _firstDay);
+    }
+	
 
 	/**
-	 * This option allows you to localize the DatePicker, specifying the
-	 * language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1
-	 * language codes eventually followed by ISO 3166-1 country codes. The
-	 * Datepicker is localized with the language specified by the ViewRoot
-	 * Locale.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getLang() {
-		String value = (String) getStateHelper().eval(PropertyKeys.lang);
-		return value;
+		String value = (String)getStateHelper().eval(PropertyKeys.lang);
+		return  value;
 	}
-
+	
 	/**
-	 * This option allows you to localize the DatePicker, specifying the
-	 * language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1
-	 * language codes eventually followed by ISO 3166-1 country codes. The
-	 * Datepicker is localized with the language specified by the ViewRoot
-	 * Locale.
-	 * <P>
+	 * This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setLang(String _lang) {
-		getStateHelper().put(PropertyKeys.lang, _lang);
-	}
+	    getStateHelper().put(PropertyKeys.lang, _lang);
+    }
+	
 
 	/**
-	 * Controls how the Calendar is showed, can be inline or popup. Default is
-	 * popup.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Locale setting. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getLocale() {
+		String value = (String)getStateHelper().eval(PropertyKeys.locale);
+		return  value;
+	}
+	
+	/**
+	 * Locale setting. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setLocale(String _locale) {
+	    getStateHelper().put(PropertyKeys.locale, _locale);
+    }
+	
+
+	/**
+	 * Restricts the legal date range. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getMinDate() {
+		String value = (String)getStateHelper().eval(PropertyKeys.minDate);
+		return  value;
+	}
+	
+	/**
+	 * Restricts the legal date range. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setMinDate(String _minDate) {
+	    getStateHelper().put(PropertyKeys.minDate, _minDate);
+    }
+	
+
+	/**
+	 * Restricts the legal date range. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getMaxDate() {
+		String value = (String)getStateHelper().eval(PropertyKeys.maxDate);
+		return  value;
+	}
+	
+	/**
+	 * Restricts the legal date range. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setMaxDate(String _maxDate) {
+	    getStateHelper().put(PropertyKeys.maxDate, _maxDate);
+    }
+	
+
+	/**
+	 * Controls how the Calendar is showed, can be inline or popup. Default is popup. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getMode() {
-		String value = (String) getStateHelper().eval(PropertyKeys.mode);
-		return value;
+		String value = (String)getStateHelper().eval(PropertyKeys.mode, "toggle-icon");
+		return  value;
 	}
-
+	
 	/**
-	 * Controls how the Calendar is showed, can be inline or popup. Default is
-	 * popup.
-	 * <P>
+	 * Controls how the Calendar is showed, can be inline or popup. Default is popup. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setMode(String _mode) {
-		getStateHelper().put(PropertyKeys.mode, _mode);
-	}
+	    getStateHelper().put(PropertyKeys.mode, _mode);
+    }
+	
 
 	/**
-	 * Number of months to show.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Number of months to show. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getNumberOfMonths() {
-		Integer value = (Integer) getStateHelper().eval(PropertyKeys.numberOfMonths, 0);
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.numberOfMonths, 0);
 		return (int) value;
 	}
-
+	
 	/**
-	 * Number of months to show.
-	 * <P>
+	 * Number of months to show. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setNumberOfMonths(int _numberOfMonths) {
-		getStateHelper().put(PropertyKeys.numberOfMonths, _numberOfMonths);
-	}
+	    getStateHelper().put(PropertyKeys.numberOfMonths, _numberOfMonths);
+    }
+	
 
 	/**
-	 * The placeholder attribute shows text in a field until the field is
-	 * focused upon, then hides the text.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The placeholder attribute shows text in a field until the field is focused upon, then hides the text. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getPlaceholder() {
-		String value = (String) getStateHelper().eval(PropertyKeys.placeholder);
-		return value;
+		String value = (String)getStateHelper().eval(PropertyKeys.placeholder);
+		return  value;
 	}
-
+	
 	/**
-	 * The placeholder attribute shows text in a field until the field is
-	 * focused upon, then hides the text.
-	 * <P>
+	 * The placeholder attribute shows text in a field until the field is focused upon, then hides the text. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setPlaceholder(String _placeholder) {
-		getStateHelper().put(PropertyKeys.placeholder, _placeholder);
-	}
+	    getStateHelper().put(PropertyKeys.placeholder, _placeholder);
+    }
+	
 
 	/**
-	 * Boolean value to specify if row Buttons to the bottom of calendar should
-	 * be shown.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Boolean value to specify if row Buttons to the bottom of calendar should be shown. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isShowButtonPanel() {
-		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.showButtonPanel, false);
+		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.showButtonPanel, false);
 		return (boolean) value;
 	}
-
+	
 	/**
-	 * Boolean value to specify if row Buttons to the bottom of calendar should
-	 * be shown.
-	 * <P>
+	 * Boolean value to specify if row Buttons to the bottom of calendar should be shown. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setShowButtonPanel(boolean _showButtonPanel) {
-		getStateHelper().put(PropertyKeys.showButtonPanel, _showButtonPanel);
-	}
+	    getStateHelper().put(PropertyKeys.showButtonPanel, _showButtonPanel);
+    }
+	
 
 	/**
-	 * Boolean value to specify if Week number should be shown.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Boolean value to specify if Week number should be shown. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isShowWeek() {
-		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.showWeek, false);
+		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.showWeek, false);
 		return (boolean) value;
 	}
-
+	
 	/**
-	 * Boolean value to specify if Week number should be shown.
-	 * <P>
+	 * Boolean value to specify if Week number should be shown. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setShowWeek(boolean _showWeek) {
-		getStateHelper().put(PropertyKeys.showWeek, _showWeek);
-	}
+	    getStateHelper().put(PropertyKeys.showWeek, _showWeek);
+    }
+	
 
 	/**
-	 * The text of the tooltip.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Inline style of the input element. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getStyle() {
+		String value = (String)getStateHelper().eval(PropertyKeys.style);
+		return  value;
+	}
+	
+	/**
+	 * Inline style of the input element. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setStyle(String _style) {
+	    getStateHelper().put(PropertyKeys.style, _style);
+    }
+	
+
+	/**
+	 * Style class of this element. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getStyleClass() {
+		String value = (String)getStateHelper().eval(PropertyKeys.styleClass);
+		return  value;
+	}
+	
+	/**
+	 * Style class of this element. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setStyleClass(String _styleClass) {
+	    getStateHelper().put(PropertyKeys.styleClass, _styleClass);
+    }
+	
+
+	/**
+	 * The text of the tooltip. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTooltip() {
-		String value = (String) getStateHelper().eval(PropertyKeys.tooltip);
-		return value;
+		String value = (String)getStateHelper().eval(PropertyKeys.tooltip);
+		return  value;
 	}
-
+	
 	/**
-	 * The text of the tooltip.
-	 * <P>
+	 * The text of the tooltip. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltip(String _tooltip) {
-		getStateHelper().put(PropertyKeys.tooltip, _tooltip);
-	}
+	    getStateHelper().put(PropertyKeys.tooltip, _tooltip);
+    }
+	
 
 	/**
-	 * Where is the tooltip div generated? That's primarily a technical value
-	 * that can be used to fix rendering error in special cases. Also see
-	 * data-container in the documentation of Bootstrap. The default value is
-	 * body.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTooltipContainer() {
-		String value = (String) getStateHelper().eval(PropertyKeys.tooltipContainer, "body");
-		return value;
+		String value = (String)getStateHelper().eval(PropertyKeys.tooltipContainer, "body");
+		return  value;
 	}
-
+	
 	/**
-	 * Where is the tooltip div generated? That's primarily a technical value
-	 * that can be used to fix rendering error in special cases. Also see
-	 * data-container in the documentation of Bootstrap. The default value is
-	 * body.
-	 * <P>
+	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipContainer(String _tooltipContainer) {
-		getStateHelper().put(PropertyKeys.tooltipContainer, _tooltipContainer);
-	}
+	    getStateHelper().put(PropertyKeys.tooltipContainer, _tooltipContainer);
+    }
+	
 
 	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelay() {
-		Integer value = (Integer) getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
 		return (int) value;
 	}
-
+	
 	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
+	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelay(int _tooltipDelay) {
-		getStateHelper().put(PropertyKeys.tooltipDelay, _tooltipDelay);
-	}
+	    getStateHelper().put(PropertyKeys.tooltipDelay, _tooltipDelay);
+    }
+	
 
 	/**
-	 * The tooltip is hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelayHide() {
-		Integer value = (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
 		return (int) value;
 	}
-
+	
 	/**
-	 * The tooltip is hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
+	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelayHide(int _tooltipDelayHide) {
-		getStateHelper().put(PropertyKeys.tooltipDelayHide, _tooltipDelayHide);
-	}
+	    getStateHelper().put(PropertyKeys.tooltipDelayHide, _tooltipDelayHide);
+    }
+	
 
 	/**
-	 * The tooltip is shown with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelayShow() {
-		Integer value = (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
 		return (int) value;
 	}
-
+	
 	/**
-	 * The tooltip is shown with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
+	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelayShow(int _tooltipDelayShow) {
-		getStateHelper().put(PropertyKeys.tooltipDelayShow, _tooltipDelayShow);
-	}
+	    getStateHelper().put(PropertyKeys.tooltipDelayShow, _tooltipDelayShow);
+    }
+	
 
 	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom",
-	 * "right", "left", "auto", "auto top", "auto bottom", "auto right" and
-	 * "auto left". Default to "bottom".
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTooltipPosition() {
-		String value = (String) getStateHelper().eval(PropertyKeys.tooltipPosition);
-		return value;
+		String value = (String)getStateHelper().eval(PropertyKeys.tooltipPosition);
+		return  value;
 	}
-
+	
 	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom",
-	 * "right", "left", "auto", "auto top", "auto bottom", "auto right" and
-	 * "auto left". Default to "bottom".
-	 * <P>
+	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipPosition(String _tooltipPosition) {
-		getStateHelper().put(PropertyKeys.tooltipPosition, _tooltipPosition);
-	}
-
-	public Locale getSloc() {
-		return sloc;
-	}
-
-	public void setSloc(Locale sloc) {
-		this.sloc = sloc;
-	}
-
-	public String getSdf() {
-		return sdf;
-	}
-
-	public void setSdf(String sdf) {
-		this.sdf = sdf;
-	}
-
+	    getStateHelper().put(PropertyKeys.tooltipPosition, _tooltipPosition);
+    }
+	
 }
+

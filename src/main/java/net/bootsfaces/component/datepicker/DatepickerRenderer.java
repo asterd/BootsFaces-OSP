@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -31,7 +30,6 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import net.bootsfaces.component.icon.IconRenderer;
-import net.bootsfaces.render.A;
 import net.bootsfaces.render.CoreRenderer;
 import net.bootsfaces.render.JQ;
 import net.bootsfaces.render.Tooltip;
@@ -98,36 +96,53 @@ public class DatepickerRenderer extends CoreRenderer {
 	 * @throws IOException
 	 */
 	private void encodeHTML(FacesContext fc, Datepicker datepicker) throws IOException {
-		Map<String, Object> attrs = datepicker.getAttributes();
 		String clientId = datepicker.getClientId(fc);
 		ResponseWriter rw = fc.getResponseWriter();
-		// stz = selectTimeZone(attrs.get(A.TZ));
 
-		datepicker.setSloc(datepicker.selectLocale(fc.getViewRoot().getLocale(), A.asString(attrs.get(JQ.LOCALE))));
-		datepicker.setSdf(Datepicker.selectDateFormat(datepicker.getSloc(), A.asString(attrs.get(JQ.DTFORMAT))));
-
-		// Debugging Locale and dateformat
-		// rw.write("<span>DEBUG sloc='"+sloc+"', sdf='"+sdf+"' </span>");
-
-		String dpId;
+		datepicker.setSloc(datepicker.selectLocale(fc.getViewRoot().getLocale(), datepicker.getLocale()));
+		datepicker.setSdf(Datepicker.selectDateFormat(datepicker.getSloc(), datepicker.getDateFormat()));
 
 		Object v = datepicker.getSubmittedValue();
 		if (v == null) {
 			v = datepicker.getValue();
 		}
 
+		rw.startElement("div", datepicker);
+		if (null != datepicker.getDir()) {
+			rw.writeAttribute("dir", datepicker.getDir(), "dir");
+		}
+
+		if (datepicker.isInline()) {
+			rw.writeAttribute("class", "form-inline", "class");
+
+		} else {
+			rw.writeAttribute("class", "form-group", "class");
+		}
+		String label = datepicker.getLabel();
+		if (label != null) {
+			rw.startElement("label", datepicker);
+			rw.writeAttribute("for", "input_" + clientId, "for");
+			generateErrorAndRequiredClass(datepicker, rw, clientId);
+
+			rw.writeText(label, null);
+			rw.endElement("label");
+		}
+
 		/*
 		 * 6 modes: 1) inline 2) popup (no icons) 3) popup-icon 4) icon-popup 5)
 		 * toggle-icon (Default) 6) icon-toggle
 		 */
-		boolean isDisabled = A.toBool(attrs.get("disabled"));
-		mode = A.asString(attrs.get("mode"), "toggle-icon");
+		boolean isDisabled = datepicker.isDisabled();
+		mode = datepicker.getMode();
 		boolean inline = mode.equals("inline");
 
+		String dpId;
 		if (inline) { // inline => div with ID
 			dpId = clientId + "_" + "div";
 			rw.startElement("div", datepicker);
 			rw.writeAttribute("id", dpId, null);
+			writeAttribute(rw, "style", datepicker.getStyle());
+			writeAttribute(rw, "class", datepicker.getStyleClass());
 			rw.endElement("div");
 		} else { // popup
 			dpId = clientId;
@@ -138,7 +153,7 @@ public class DatepickerRenderer extends CoreRenderer {
 				rw.writeAttribute("class", "input-group", "class");
 				if (mode.equals("icon-popup") || mode.equals("icon-toggle")) {
 					rw.startElement("span", datepicker);
-					rw.writeAttribute("id", clientId + "_" + "input-group-addon", "id");
+					rw.writeAttribute("id", clientId + "_input-group-addon", "id");
 					rw.writeAttribute("class", "input-group-addon", "class");
 					IconRenderer.encodeIcon(rw, datepicker, "calendar", false, null, null, null, false, null, null,
 							isDisabled, true);
@@ -151,14 +166,20 @@ public class DatepickerRenderer extends CoreRenderer {
 		rw.startElement("input", null);
 		rw.writeAttribute("id", clientId, null);
 		rw.writeAttribute("name", clientId, null);
-		Tooltip.generateTooltip(fc, attrs, rw);
+		Tooltip.generateTooltip(fc, datepicker, rw);
 		rw.writeAttribute("type", type, null);
-		rw.writeAttribute("class", "form-control", "class");
+		writeAttribute(rw, "style", datepicker.getStyle());
+		String styleClass = datepicker.getStyleClass();
+		if (styleClass == null)
+			styleClass = "form-control";
+		else
+			styleClass = "form-control" + styleClass;
+		rw.writeAttribute("class", styleClass, "class");
 		if (v != null) {
 			rw.writeAttribute("value", getDateAsString(v, datepicker.getSdf(), datepicker.getSloc()), null);
 		}
 
-		String ph = A.asString(attrs.get("placeholder"));
+		String ph = datepicker.getPlaceholder();
 		if (ph != null) {
 			rw.writeAttribute("placeholder", ph, null);
 		}
@@ -166,7 +187,7 @@ public class DatepickerRenderer extends CoreRenderer {
 		if (isDisabled) {
 			rw.writeAttribute("disabled", "disabled", null);
 		}
-		if (A.toBool(attrs.get("readonly"))) {
+		if (datepicker.isReadonly()) {
 			rw.writeAttribute("readonly", "readonly", null);
 		}
 		rw.endElement("input");
@@ -174,7 +195,7 @@ public class DatepickerRenderer extends CoreRenderer {
 		encodeJS(fc, rw, clientId, dpId, datepicker);
 		if (mode.equals("popup-icon") || mode.equals("toggle-icon")) {
 			rw.startElement("span", datepicker);
-			rw.writeAttribute("id", clientId + "_" + "input-group-addon", "id");
+			rw.writeAttribute("id", clientId + "_input-group-addon", "id");
 			rw.writeAttribute("class", "input-group-addon", "class");
 
 			IconRenderer.encodeIcon(rw, datepicker, "calendar", false, null, null, null, false, null, null, isDisabled,
@@ -184,59 +205,59 @@ public class DatepickerRenderer extends CoreRenderer {
 
 		if (!inline && !mode.equals("popup")) {
 			rw.endElement("div");
-			JQ.datePickerToggler(rw, clientId, clientId + "_" + "input-group-addon");
+			JQ.datePickerToggler(rw, clientId, clientId + "_input-group-addon");
 
 		} // Closes the popup prepend/append style div
+		rw.endElement("div"); // closes the form-group div
 	}
 
 	private void encodeJS(FacesContext fc, ResponseWriter rw, String cId, String dpId, Datepicker datepicker)
 			throws IOException {
-		Map<String, Object> attrs = datepicker.getAttributes();
 
 		StringBuilder sb = new StringBuilder(150);
 		sb.append(JQ.DTFORMAT).append(":").append("'" + convertFormat(datepicker.getSdf()) + "'").append(",");
 
-		if (A.toInt(attrs.get(JQ.NUMOFMONTHS)) > 0) {
-			sb.append(JQ.NUMOFMONTHS).append(":").append(attrs.get(JQ.NUMOFMONTHS)).append(",");
+		if (datepicker.getNumberOfMonths() > 0) {
+			sb.append(JQ.NUMOFMONTHS).append(":").append(datepicker.getNumberOfMonths()).append(",");
 		}
-		if (A.toInt(attrs.get(JQ.FIRSTDAY)) > 0) {
-			sb.append(JQ.FIRSTDAY).append(":").append(attrs.get(JQ.FIRSTDAY)).append(",");
+		if (datepicker.getFirstDay() > 0) {
+			sb.append(JQ.FIRSTDAY).append(":").append(datepicker.getFirstDay()).append(",");
 		}
-		if (A.toBool(attrs.get(JQ.SHOWBUTS))) {
-			sb.append(JQ.SHOWBUTS).append(":").append("true").append(",");
+		if (datepicker.isShowButtonPanel()) {
+			sb.append("showButtonPanel").append(":").append("true").append(",");
 		}
-		if (A.toBool(attrs.get(JQ.CHNGMONTH))) {
-			sb.append(JQ.CHNGMONTH).append(":").append("true").append(",");
+		if (datepicker.isChangeMonth()) {
+			sb.append("changeMonth").append(":").append("true").append(",");
 		}
-		if (A.toBool(attrs.get(JQ.CHNGYEAR))) {
-			sb.append(JQ.CHNGYEAR).append(":").append("true").append(",");
+		if (datepicker.isChangeYear()) {
+			sb.append("changeYear").append(":").append("true").append(",");
 		}
-		if (A.toBool(attrs.get(JQ.SHOWWK))) {
-			sb.append(JQ.SHOWWK).append(":").append("true").append(",");
+		if (datepicker.isShowWeek()) {
+			sb.append("showWeek").append(":").append("true").append(",");
 		}
 
 		if (mode.equals("toggle-icon") || mode.equals("icon-toggle")) {
-			sb.append(JQ.SHOWON).append(":").append("'" + "button" + "'").append(",");
+			sb.append("showOn").append(":").append("'" + "button" + "'").append(",");
 		}
 
 		/*
 		 * Attributes that need decoding the Date
 		 */
-		if (attrs.get(JQ.MINDATE) != null) {
-			sb.append(JQ.MINDATE + ":" + "'")
-					.append(getDateAsString(attrs.get(JQ.MINDATE), datepicker.getSdf(), datepicker.getSloc()))
+		if (datepicker.getMinDate() != null) {
+			sb.append("minDate" + ":" + "'")
+					.append(getDateAsString(datepicker.getMinDate(), datepicker.getSdf(), datepicker.getSloc()))
 					.append("'");
 		}
-		if (attrs.get(JQ.MAXDATE) != null) {
-			sb.append(JQ.MAXDATE + ":" + "'")
-					.append(getDateAsString(attrs.get(JQ.MAXDATE), datepicker.getSdf(), datepicker.getSloc()))
+		if (datepicker.getMaxDate() != null) {
+			sb.append("maxDate" + ":" + "'")
+					.append(getDateAsString(datepicker.getMaxDate(), datepicker.getSdf(), datepicker.getSloc()))
 					.append("'");
 		}
 
 		// If user specifies a specific language to use then we render the
 		// datepicker using this language
 		// else we use the selected locale language
-		String l = A.asString(attrs.get(JQ.LANG));
+		String l = datepicker.getLang();
 		if (l == null) {
 			l = datepicker.getSloc().getLanguage();
 		}
@@ -286,5 +307,4 @@ public class DatepickerRenderer extends CoreRenderer {
 			return format;
 		}
 	}
-
 }

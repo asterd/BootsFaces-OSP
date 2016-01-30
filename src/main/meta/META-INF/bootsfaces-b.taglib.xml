@@ -3910,6 +3910,18 @@
 	    <type>Boolean</type>
 	  </attribute>
 	  <attribute>
+	    <description><![CDATA[Format of the date. I.e. MM/dd/yyyy for the anglo-saxon date format or dd.MM.yyyy for the date format used widely in Europe.]]></description>
+	    <name>dateFormat</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Boolean value to specify if the button is disabled.]]></description>
+	    <name>disabled</name>
+	    <required>false</required>
+	    <type>Boolean</type>
+	  </attribute>
+	  <attribute>
 	    <description><![CDATA[Set the first day of the week: Sunday is 0, Monday is 1, etc.]]></description>
 	    <name>first-day</name>
 	    <required>false</required>
@@ -3930,6 +3942,24 @@
 	  <attribute>
 	    <description><![CDATA[This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale.]]></description>
 	    <name>lang</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Locale setting.]]></description>
+	    <name>locale</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Restricts the legal date range.]]></description>
+	    <name>minDate</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Restricts the legal date range.]]></description>
+	    <name>maxDate</name>
 	    <required>false</required>
 	    <type>java.lang.String</type>
 	  </attribute>
@@ -3986,6 +4016,24 @@
 	    <name>showWeek</name>
 	    <required>false</required>
 	    <type>Boolean</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Inline style of the input element.]]></description>
+	    <name>style</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Style class of this element.]]></description>
+	    <name>style-class</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	    <description><![CDATA[Style class of this element.]]></description>
+	    <name>styleClass</name>
+	    <required>false</required>
+	    <type>java.lang.String</type>
 	  </attribute>
 	  <attribute>
 	    <description><![CDATA[The text of the tooltip.]]></description>

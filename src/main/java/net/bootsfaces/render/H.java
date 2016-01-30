@@ -29,10 +29,10 @@ public final class H {
 	// accesskey, alt, dir, disabled, lang, maxlength, readonly, size, style,
 	// styleClass, tabindex, title
 	// NOTE: disabled, readonly, styleClass are handled by component
-	public static final String[] INPUT_TEXT = { "accesskey", "alt", "dir", "lang", "maxlength", "size", "style",
+	public static final String[] INPUT_TEXT = { "accesskey", "alt", "dir", "lang", "maxlength", "size", 
 			"tabindex", "title" };
 
-	public static final String[] CHECKBOX = { "accesskey", "alt", "lang", "style", "tabindex", "title" };
+	public static final String[] CHECKBOX = { "accesskey", "alt", "lang", "tabindex", "title" };
 
 	public static final String[] SELECT_ONE_MENU = { "accesskey", "alt", "lang", "style", "tabindex", "title" };
 

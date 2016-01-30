@@ -149,10 +149,6 @@ public final class JQ {
      */
     public static final String NUMOFMONTHS= "numberOfMonths"; //Int
     public static final String FIRSTDAY = "firstDay"; //Int - Set the first day of the week: Sunday is 0, Monday is 1, etc.
-    public static final String SHOWBUTS = "showButtonPanel"; //Bool
-    public static final String CHNGMONTH = "changeMonth"; //Bool
-    public static final String CHNGYEAR = "changeYear"; //Bool
-    public static final String SHOWWK = "showWeek"; //Bool
     public static final String DTFORMAT = "dateFormat";
     /*
      * Default: "c-10:c+10" 
@@ -164,15 +160,10 @@ public final class JQ {
      */
     public static final String YRANGE = "yearRange";
     public static final String LOCALE = "locale";
-    public static final String MINDATE = "minDate";
-    public static final String MAXDATE = "maxDate";
     public static final String DEFAULTDT = "defaultDate";  //Set the date to highlight on first opening if the field is blank. (e.g. +7 +1m +3d ...)
-    public static final String SHOWON="showOn";
-    public static final String LANG= "lang";
-    
     public static final String[] DP_OPTS= {
-        NUMOFMONTHS, SHOWBUTS, CHNGMONTH, CHNGYEAR, DTFORMAT,
-        YRANGE, LOCALE, MINDATE, MAXDATE, SHOWWK, DEFAULTDT, FIRSTDAY
+        NUMOFMONTHS, "showButtonPanel", "changeMonth", "changeYear", DTFORMAT,
+        YRANGE, LOCALE, "minDate", "maxDate", "showWeek", DEFAULTDT, FIRSTDAY
     };
 
 }
