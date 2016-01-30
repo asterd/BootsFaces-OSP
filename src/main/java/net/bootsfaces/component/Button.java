@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -73,6 +73,7 @@ public class Button extends HtmlOutcomeTargetButton {
 	 * </p>
 	 */
 	public static final String COMPONENT_FAMILY = BSFCOMPONENT;
+	private Map<String, Object> attributes;
 
 	public Button() {
 		setRendererType(null); // this component renders itself
@@ -80,6 +81,14 @@ public class Button extends HtmlOutcomeTargetButton {
 		Tooltip.addResourceFile();
 
 	}
+	
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 
 	/**
 	 * Renders the button. <br>

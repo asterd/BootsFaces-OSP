@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -19,17 +19,20 @@
 
 package net.bootsfaces.component.column;
 
+import java.util.Map;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIOutput;
 
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.render.Tooltip;
 
 
 /** This class holds the attributes of &lt;b:column /&gt;. */
 @ResourceDependencies({ 
-    @ResourceDependency(library = "bsf", name = "css/core.css"),
+    @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
 	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent("net.bootsfaces.component.column.Column")
 public class Column extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
@@ -39,6 +42,8 @@ public class Column extends UIOutput  implements net.bootsfaces.render.IHasToolt
 	public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
 	
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.column.Column";
+	
+	private Map<String, Object> attributes = null;
 	
 	public Column() {
 		
@@ -51,17 +56,29 @@ public class Column extends UIOutput  implements net.bootsfaces.render.IHasToolt
 		return COMPONENT_FAMILY;
 	}
 	
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+	
 	
     protected enum PropertyKeys {
 colLg,
 colMd,
 colSm,
 colXs,
-dir, 
+largeScreen,
+mediumScreen,
+smallScreen,
+tinyScreen,
+dir,
 display,
 hidden,
 offset,
 offsetLg,
+offsetMd,
 offsetSm,
 offsetXs,
 span,
@@ -91,74 +108,164 @@ visible
 	
 
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on large screens (≥1200 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getColLg() {
-		Integer value = (Integer)getStateHelper().eval(PropertyKeys.colLg, 0);
-		return (int) value;
+	public String getColLg() {
+		String value = (String)getStateHelper().eval(PropertyKeys.colLg, "-1");
+		return  value;
 	}
 	
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on large screens (≥1200 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setColLg(int _colLg) {
+	public void setColLg(String _colLg) {
 	    getStateHelper().put(PropertyKeys.colLg, _colLg);
     }
 	
 
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getColMd() {
-		Integer value = (Integer)getStateHelper().eval(PropertyKeys.colMd, 0);
-		return (int) value;
+	public String getColMd() {
+		String value = (String)getStateHelper().eval(PropertyKeys.colMd, "-1");
+		return  value;
 	}
 	
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setColMd(int _colMd) {
+	public void setColMd(String _colMd) {
 	    getStateHelper().put(PropertyKeys.colMd, _colMd);
     }
 	
 
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on small screens (≥768p pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getColSm() {
-		Integer value = (Integer)getStateHelper().eval(PropertyKeys.colSm, 0);
-		return (int) value;
+	public String getColSm() {
+		String value = (String)getStateHelper().eval(PropertyKeys.colSm, "-1");
+		return  value;
 	}
 	
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on small screens (≥768p pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setColSm(int _colSm) {
+	public void setColSm(String _colSm) {
 	    getStateHelper().put(PropertyKeys.colSm, _colSm);
     }
 	
 
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getColXs() {
-		Integer value = (Integer)getStateHelper().eval(PropertyKeys.colXs, 0);
-		return (int) value;
+	public String getColXs() {
+		String value = (String)getStateHelper().eval(PropertyKeys.colXs, "-1");
+		return  value;
 	}
 	
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setColXs(int _colXs) {
+	public void setColXs(String _colXs) {
 	    getStateHelper().put(PropertyKeys.colXs, _colXs);
+    }
+	
+
+	/**
+	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getLargeScreen() {
+		String value = (String)getStateHelper().eval(PropertyKeys.largeScreen, "-1");
+		return  value;
+	}
+	
+	/**
+	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setLargeScreen(String _largeScreen) {
+	    getStateHelper().put(PropertyKeys.largeScreen, _largeScreen);
+    }
+	
+
+	/**
+	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getMediumScreen() {
+		String value = (String)getStateHelper().eval(PropertyKeys.mediumScreen, "-1");
+		return  value;
+	}
+	
+	/**
+	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setMediumScreen(String _mediumScreen) {
+	    getStateHelper().put(PropertyKeys.mediumScreen, _mediumScreen);
+    }
+	
+
+	/**
+	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getSmallScreen() {
+		String value = (String)getStateHelper().eval(PropertyKeys.smallScreen, "-1");
+		return  value;
+	}
+	
+	/**
+	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setSmallScreen(String _smallScreen) {
+	    getStateHelper().put(PropertyKeys.smallScreen, _smallScreen);
+    }
+	
+
+	/**
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getTinyScreen() {
+		String value = (String)getStateHelper().eval(PropertyKeys.tinyScreen, "-1");
+		return  value;
+	}
+	
+	/**
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setTinyScreen(String _tinyScreen) {
+	    getStateHelper().put(PropertyKeys.tinyScreen, _tinyScreen);
+    }
+	
+
+	/**
+	 * Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getDir() {
+		String value = (String)getStateHelper().eval(PropertyKeys.dir);
+		return  value;
+	}
+	
+	/**
+	 * Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content). <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setDir(String _dir) {
+	    getStateHelper().put(PropertyKeys.dir, _dir);
     }
 	
 
@@ -238,6 +345,24 @@ visible
 	 * Integer value to specify how many columns to offset. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
+	public int getOffsetMd() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.offsetMd, 0);
+		return (int) value;
+	}
+	
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetMd(int _offsetMd) {
+	    getStateHelper().put(PropertyKeys.offsetMd, _offsetMd);
+    }
+	
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
 	public int getOffsetSm() {
 		Integer value = (Integer)getStateHelper().eval(PropertyKeys.offsetSm, 0);
 		return (int) value;
@@ -271,19 +396,19 @@ visible
 	
 
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getSpan() {
-		Integer value = (Integer)getStateHelper().eval(PropertyKeys.span, 0);
-		return (int) value;
+	public String getSpan() {
+		String value = (String)getStateHelper().eval(PropertyKeys.span, "-1");
+		return  value;
 	}
 	
 	/**
-	 * Integer value to specify how many columns to span. <P>
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setSpan(int _span) {
+	public void setSpan(String _span) {
 	    getStateHelper().put(PropertyKeys.span, _span);
     }
 	
@@ -448,27 +573,6 @@ visible
 	public void setVisible(String _visible) {
 	    getStateHelper().put(PropertyKeys.visible, _visible);
     }
-
-	/**
-	 * Direction indication for text that does not inherit directionality.
-	 * <P>
-	 * 
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
-	 */
-	public String getDir() {
-		String value = (String) getStateHelper().eval(PropertyKeys.dir);
-		return value;
-	}
-
-	/**
-	 * Direction indication for text that does not inherit directionality.
-	 * <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setDir(String _dir) {
-		getStateHelper().put(PropertyKeys.dir, _dir);
-	}
 	
 }
 

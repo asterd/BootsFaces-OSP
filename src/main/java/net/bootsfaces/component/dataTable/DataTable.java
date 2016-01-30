@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -30,6 +30,7 @@ import javax.faces.component.FacesComponent;
 import javax.faces.component.UIData;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.component.ajax.IAJAXComponent;
 import net.bootsfaces.render.Tooltip;
 
@@ -38,6 +39,7 @@ import net.bootsfaces.render.Tooltip;
 		@ResourceDependency(library = "bsf", name = "css/bsf.css", target = "head"),
 		@ResourceDependency(library = "javax.faces", name = "jsf.js", target = "head"),
 		@ResourceDependency(library = "bsf", name = "js/jquery.dataTables.min.js", target = "body"),
+		@ResourceDependency(library = "bsf", name = "js/dataTables.bootstrap.min.js", target = "body"),
 		@ResourceDependency(library = "bsf", name = "css/dataTables.bootstrap.min.css", target = "head"),
 		@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent("net.bootsfaces.component.dataTable.DataTable")
@@ -51,7 +53,16 @@ public class DataTable extends UIData implements IAJAXComponent, ClientBehaviorH
 
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("click",
 			"dblclick", "dragstart", "dragover", "drop", "mousedown", "mousemove", "mouseout", "mouseover", "mouseup"));
+
+	private Map<String, Object> attributes;
 	
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 	@Override
 	public boolean getRendersChildren() {
 		// TODO Auto-generated method stub

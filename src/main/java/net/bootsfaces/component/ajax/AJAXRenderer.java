@@ -115,22 +115,24 @@ public class AJAXRenderer extends CoreRenderer {
 					}
 
 				}
-			} else {
-				System.out.println("Event is null - probably that's a bug in AJAXRenderer, roughly line 100");
 			}
 
+			boolean addEventToQueue=false;
 			if (component instanceof ActionSource) {
 				ActionSource b = (ActionSource) component;
 				ActionListener[] actionListeners = b.getActionListeners();
 				if (null != actionListeners && actionListeners.length > 0) {
-					component.queueEvent(new ActionEvent(component));
+					addEventToQueue=true;
 				}
 			}
 			if (component instanceof ActionSource2) {
 				MethodExpression actionExpression = ((ActionSource2) component).getActionExpression();
 				if (null != actionExpression) {
-					component.queueEvent(new ActionEvent(component));
+					addEventToQueue=true;
 				}
+			}
+			if (addEventToQueue) {
+				component.queueEvent(new ActionEvent(component));
 			}
 		}
 	}
@@ -177,7 +179,9 @@ public class AJAXRenderer extends CoreRenderer {
 					if (script.length() > 0 && "click".equals(defaultEvent))
 						script += ";return false;";
 				rw.writeAttribute("on" + defaultEvent, script, null);
-			} else {
+			}
+			else if (!(component instanceof CommandButton)) {
+				// b:navCommandLink doesn't submit the form, so we need to use AJAX
 				boolean generateNonAJAXCommand = false;
 				if (component instanceof ActionSource) {
 					ActionSource b = (ActionSource) component;

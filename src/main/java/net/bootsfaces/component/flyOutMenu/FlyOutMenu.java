@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -19,17 +19,20 @@
 
 package net.bootsfaces.component.flyOutMenu;
 
+import java.util.Map;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIOutput;
 
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.render.Tooltip;
 
 
 /** This class holds the attributes of &lt;b:flyOutMenu /&gt;. */
 @ResourceDependencies({ 
-    @ResourceDependency(library = "bsf", name = "css/core.css"),
+    @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
 	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent("net.bootsfaces.component.flyOutMenu.FlyOutMenu")
 public class FlyOutMenu extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
@@ -39,6 +42,8 @@ public class FlyOutMenu extends UIOutput  implements net.bootsfaces.render.IHasT
 	public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
 	
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.flyOutMenu.FlyOutMenu";
+
+	private Map<String, Object> attributes;
 	
 	public FlyOutMenu() {
 		
@@ -47,6 +52,13 @@ public class FlyOutMenu extends UIOutput  implements net.bootsfaces.render.IHasT
 		setRendererType(DEFAULT_RENDERER);
 	}
 	
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}

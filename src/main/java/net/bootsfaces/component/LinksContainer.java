@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -38,7 +38,7 @@ import net.bootsfaces.render.Tooltip;
  */
 
 @ResourceDependencies({ 
-    @ResourceDependency(library = "bsf", name = "css/core.css"),
+    @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
 	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 public class LinksContainer extends UIComponentBase {
     
@@ -50,11 +50,20 @@ public class LinksContainer extends UIComponentBase {
      * <p>The component family for this component.</p>
      */
     public static final String COMPONENT_FAMILY = C.BSFCOMPONENT;
+	private Map<String, Object> attributes;
     
     public LinksContainer() {
         setRendererType(null); // this component renders itself
         Tooltip.addResourceFile();
     }
+    
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 
     @Override
     public void encodeBegin(FacesContext fc) throws IOException {

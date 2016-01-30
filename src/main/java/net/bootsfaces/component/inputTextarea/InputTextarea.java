@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ * Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *
  * This file is part of BootsFaces.
  *
@@ -24,6 +24,7 @@ import javax.faces.component.FacesComponent;
 import javax.faces.component.html.HtmlInputText;
 
 import net.bootsfaces.C;
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.component.ajax.IAJAXComponent;
 import net.bootsfaces.render.IHasTooltip;
 import net.bootsfaces.render.Tooltip;
@@ -39,6 +40,7 @@ import net.bootsfaces.render.Tooltip;
 		@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent("net.bootsfaces.component.inputTextarea.InputTextarea")
 public class InputTextarea extends HtmlInputText implements IHasTooltip, IAJAXComponent {
+	private String renderLabel = null;
 
 	/**
 	 * <p>
@@ -53,11 +55,10 @@ public class InputTextarea extends HtmlInputText implements IHasTooltip, IAJAXCo
 	 */
 	public static final String COMPONENT_FAMILY = C.BSFCOMPONENT;
 
-	public static final String ADDON = "input-group-addon";
-
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(
 			Arrays.asList("blur", "change", "valueChange", "click", "dblclick", "focus", "keydown", "keypress", "keyup",
 					"mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "select"));
+	private Map<String, Object> attributes;
 
 	/**
 	 * returns the subset of AJAX requests that are implemented by jQuery
@@ -100,6 +101,13 @@ public class InputTextarea extends HtmlInputText implements IHasTooltip, IAJAXCo
 	public InputTextarea() {
 		setRendererType("net.bootsfaces.component.InputTextareaRenderer");
 		Tooltip.addResourceFile();
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
 	}
 
 	@Override
@@ -228,6 +236,11 @@ public class InputTextarea extends HtmlInputText implements IHasTooltip, IAJAXCo
 	 *         set by the JSF file.
 	 */
 	public boolean isRenderLabel() {
+		if (null != renderLabel) {
+			boolean defaultValue = Boolean.valueOf(renderLabel);
+			Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, defaultValue);
+			return (boolean) value;
+		}
 		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, false);
 		return (boolean) value;
 	}

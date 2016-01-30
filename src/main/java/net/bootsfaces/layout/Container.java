@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -30,6 +30,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import net.bootsfaces.C;
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.listeners.AddResourcesListener;
 import net.bootsfaces.render.A;
 import net.bootsfaces.render.Tooltip;
@@ -39,7 +40,7 @@ import net.bootsfaces.render.Tooltip;
  * @author thecoder4.eu
  */
 @ResourceDependencies({ 
-    @ResourceDependency(library = "bsf", name = "css/core.css"),
+    @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
 	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 
 @FacesComponent(C.CONTAINER_COMPONENT_TYPE)
@@ -53,6 +54,7 @@ public class Container extends UIComponentBase {
      * <p>The component family for this component.</p>
      */
     public static final String COMPONENT_FAMILY = C.BSFLAYOUT;
+	private Map<String, Object> attributes;
     
 
     public Container() {
@@ -61,7 +63,14 @@ public class Container extends UIComponentBase {
         Tooltip.addResourceFile();
     }
     
-    @Override
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
+	@Override
     public void processDecodes(FacesContext context) {
     	super.processDecodes(context);
     }

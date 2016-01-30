@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -99,67 +99,17 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 		String clientId = selectBooleanCheckbox.getClientId();
 
 		int span = startColSpanDiv(rw, selectBooleanCheckbox);
+		rw.startElement("div", component);
+		writeAttribute(rw, "class", "form-group");
 		addLabel(rw, clientId, selectBooleanCheckbox);
 
-		// "Prepend" facet
-		UIComponent prependingAddOnFacet = selectBooleanCheckbox.getFacet("prepend");
-		if ((prependingAddOnFacet != null)) {
-			R.addClass2FacetComponent(prependingAddOnFacet, "OutputText", ADDON);
-		}
-
-		// "Append" facet
-		UIComponent appendingAddOnFacet = selectBooleanCheckbox.getFacet("append");
-		if ((appendingAddOnFacet != null)) {
-			R.addClass2FacetComponent(appendingAddOnFacet, "OutputText", ADDON);
-		}
-		final boolean hasAddon = startInputGroupForAddOn(rw, (prependingAddOnFacet != null),
-				(appendingAddOnFacet != null), selectBooleanCheckbox);
-
-
-		addPrependingAddOnToInputGroup(context, rw, prependingAddOnFacet, (prependingAddOnFacet != null),
-				selectBooleanCheckbox);
 		renderInputTag(context, rw, clientId, selectBooleanCheckbox);
-		addAppendingAddOnToInputGroup(context, rw, appendingAddOnFacet, (appendingAddOnFacet != null),
-				selectBooleanCheckbox);
 
-		closeInputGroupForAddOn(rw, hasAddon);
+		rw.endElement("div");
 		closeColSpanDiv(rw, span);
 
 		Tooltip.activateTooltips(context, selectBooleanCheckbox);
 
-	}
-
-	/**
-	 * Renders components added seamlessly behind the input field.
-	 *
-	 * @param context
-	 *            the FacesContext
-	 * @param rw
-	 *            the response writer
-	 * @param appendingAddOnFacet
-	 *            optional facet behind the field. Can be null.
-	 * @param hasAppendingAddOn
-	 *            optional facet in front of the field. Can be null.
-	 * @param selectBooleanCheckbox
-	 *            the component to render
-	 * 
-	 * @throws IOException
-	 *             may be thrown by the response writer
-	 */
-	protected void addAppendingAddOnToInputGroup(FacesContext context, ResponseWriter rw,
-			UIComponent appendingAddOnFacet, boolean hasAppendingAddOn, SelectBooleanCheckbox selectBooleanCheckbox)
-					throws IOException {
-		if (hasAppendingAddOn) {
-			if (appendingAddOnFacet.getClass().getName().endsWith("Button") || (appendingAddOnFacet.getChildCount() > 0
-					&& appendingAddOnFacet.getChildren().get(0).getClass().getName().endsWith("Button"))) {
-				rw.startElement("div", selectBooleanCheckbox);
-				rw.writeAttribute("class", "input-group-btn", "class");
-				appendingAddOnFacet.encodeAll(context);
-				rw.endElement("div");
-			} else {
-				appendingAddOnFacet.encodeAll(context);
-			}
-		}
 	}
 
 	/**
@@ -194,38 +144,6 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 	}
 
 	/**
-	 * Renders components added seamlessly in front of the input field.
-	 *
-	 * @param context
-	 *            the FacesContext
-	 * @param rw
-	 *            the response writer
-	 * @param prependingAddOnFacet
-	 * 
-	 * @param hasPrependingAddOn
-	 * @param selectBooleanCheckbox
-	 *            the component to render
-	 * @throws IOException
-	 *             may be thrown by the response writer
-	 */
-	protected void addPrependingAddOnToInputGroup(FacesContext context, ResponseWriter rw,
-			UIComponent prependingAddOnFacet, boolean hasPrependingAddOn, SelectBooleanCheckbox selectBooleanCheckbox)
-					throws IOException {
-		if (hasPrependingAddOn) {
-			if (prependingAddOnFacet.getClass().getName().endsWith("Button")
-					|| (prependingAddOnFacet.getChildCount() > 0
-							&& prependingAddOnFacet.getChildren().get(0).getClass().getName().endsWith("Button"))) {
-				rw.startElement("div", selectBooleanCheckbox);
-				rw.writeAttribute("class", "input-group-btn", "class");
-				prependingAddOnFacet.encodeAll(context);
-				rw.endElement("div");
-			} else {
-				prependingAddOnFacet.encodeAll(context);
-			}
-		}
-	}
-
-	/**
 	 * Terminate the column span div (if there's one). This method is protected
 	 * in order to allow third-party frameworks to derive from it.
 	 *
@@ -238,24 +156,6 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 	 */
 	protected void closeColSpanDiv(ResponseWriter rw, int span) throws IOException {
 		if (span > 0) {
-			rw.endElement("div");
-		}
-	}
-
-	/**
-	 * Terminates the input field group (if there's one). This method is
-	 * protected in order to allow third-party frameworks to derive from it.
-	 *
-	 * @param rw
-	 *            the response writer
-	 * @param hasAddon
-	 *            true if there is an add-on in front of or behind the input
-	 *            field
-	 * @throws IOException
-	 *             may be thrown by the response writer
-	 */
-	protected void closeInputGroupForAddOn(ResponseWriter rw, final boolean hasAddon) throws IOException {
-		if (hasAddon) {
 			rw.endElement("div");
 		}
 	}

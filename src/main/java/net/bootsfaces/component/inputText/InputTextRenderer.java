@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -20,12 +20,14 @@
 package net.bootsfaces.component.inputText;
 
 import java.io.IOException;
-import java.util.Iterator;
 
-import javax.faces.application.FacesMessage;
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
+import javax.faces.component.ValueHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
 import javax.faces.render.FacesRenderer;
 
 import net.bootsfaces.C;
@@ -60,6 +62,45 @@ public class InputTextRenderer extends CoreRenderer {
 		new AJAXRenderer().decode(context, component, name);
 	}
 
+	/**
+	 * This method is called by the JSF framework to get the type-safe value of
+	 * the attribute. Do not delete this method.
+	 */
+	@Override
+	public Object getConvertedValue(FacesContext fc, UIComponent c, Object sval) throws ConverterException {
+		Converter cnv = resolveConverter(fc, c);
+
+		if (cnv != null) {
+			return cnv.getAsObject(fc, c, (String) sval);
+		} else {
+			return sval;
+		}
+	}
+
+	protected Converter resolveConverter(FacesContext context, UIComponent c) {
+		if (!(c instanceof ValueHolder)) {
+			return null;
+		}
+
+		Converter cnv = ((ValueHolder) c).getConverter();
+
+		if (cnv != null) {
+			return cnv;
+		} else {
+			ValueExpression ve = c.getValueExpression("value");
+
+			if (ve != null) {
+				Class<?> valType = ve.getType(context.getELContext());
+
+				if (valType != null) {
+					return context.getApplication().createConverter(valType);
+				}
+			}
+
+			return null;
+		}
+	}
+
 	@Override
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		if (!component.isRendered()) {
@@ -82,19 +123,6 @@ public class InputTextRenderer extends CoreRenderer {
 		UIComponent app = inputText.getFacet("append");
 		boolean prepend = (prep != null);
 		boolean append = (app != null);
-
-		// If the facet contains only one component, getChildCount()=0 and the
-		// facet is the UIComponent
-		if (prepend) {
-			R.addClass2FacetComponent(prep, "OutputText", InputText.ADDON);
-			if (prep instanceof Icon)
-				((Icon) prep).setAddon(true);
-		}
-		if (append) {
-			R.addClass2FacetComponent(app, "OutputText", InputText.ADDON);
-			if (app instanceof Icon)
-				((Icon) app).setAddon(true);
-		}
 
 		String label = inputText.getLabel();
 		{
@@ -142,7 +170,6 @@ public class InputTextRenderer extends CoreRenderer {
 			rw.writeAttribute("class", "input-group", "class");
 		}
 
-
 		if (prepend) {
 			if (prep.getClass().getName().endsWith("Button") || (prep.getChildCount() > 0
 					&& prep.getChildren().get(0).getClass().getName().endsWith("Button"))) {
@@ -151,7 +178,12 @@ public class InputTextRenderer extends CoreRenderer {
 				prep.encodeAll(context);
 				rw.endElement("div");
 			} else {
+				if (prep instanceof Icon)
+					((Icon) prep).setAddon(true); // modifies the id of the icon
+				rw.startElement("span", inputText);
+				rw.writeAttribute("class", "input-group-addon", "class");
 				prep.encodeAll(context);
+				rw.endElement("span");
 			}
 		}
 
@@ -198,7 +230,12 @@ public class InputTextRenderer extends CoreRenderer {
 				app.encodeAll(context);
 				rw.endElement("div");
 			} else {
+				if (app instanceof Icon)
+					((Icon) app).setAddon(true);
+				rw.startElement("span", inputText);
+				rw.writeAttribute("class", "input-group-addon", "class");
 				app.encodeAll(context);
+				rw.endElement("span");
 			}
 		}
 

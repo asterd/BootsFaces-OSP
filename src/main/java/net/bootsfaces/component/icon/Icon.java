@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -30,14 +30,16 @@ import javax.faces.component.FacesComponent;
 import javax.faces.component.UICommand;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.component.ajax.IAJAXComponent;
 import net.bootsfaces.render.Tooltip;
 
 /** This class holds the attributes of &lt;b:icon /&gt;. */
 @ResourceDependencies({ @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
-		@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head"),
-		@ResourceDependency(library = "javax.faces", name = "jsf.js", target = "head"),
-		@ResourceDependency(library = "bsf", name = "js/bsf.js", target = "head") })
+                        @ResourceDependency(library = "bsf", name = "css/icons.css", target = "head"),
+                        @ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head"),
+                        @ResourceDependency(library = "javax.faces", name = "jsf.js", target = "head"),
+                        @ResourceDependency(library = "bsf", name = "js/bsf.js", target = "head") })
 @FacesComponent("net.bootsfaces.component.icon.Icon")
 public class Icon extends UICommand implements net.bootsfaces.render.IHasTooltip, IAJAXComponent, ClientBehaviorHolder {
 
@@ -47,9 +49,18 @@ public class Icon extends UICommand implements net.bootsfaces.render.IHasTooltip
 
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.icon.Icon";
 
+	private Map<String, Object> attributes;
+
 	public Icon() {
 		Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
 	}
 
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList(

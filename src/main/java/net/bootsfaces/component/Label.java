@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -51,10 +51,18 @@ public class Label extends UIComponentBase {
 	 * </p>
 	 */
 	public static final String COMPONENT_FAMILY = C.BSFCOMPONENT;
+	private Map<String, Object> attributes;
 
 	public Label() {
 		setRendererType(null); // this component renders itself
 		Tooltip.addResourceFile();
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -20,6 +20,7 @@
 package net.bootsfaces.layout;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
@@ -29,11 +30,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import net.bootsfaces.C;
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.render.Tooltip;
 
 
+
 @ResourceDependencies({
-	@ResourceDependency(library="bsf", name="css/core.css"),
+	@ResourceDependency(library="bsf", name="css/core.css", target = "head"),
         @ResourceDependency(library="bsf", name="css/jumbotron.css"),
         @ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head")
 })
@@ -48,12 +51,21 @@ public class Jumbotron extends UIComponentBase {
      * <p>The component family for this component.</p>
      */
     public static final String COMPONENT_FAMILY = C.BSFLAYOUT;
+	private Map<String, Object> attributes;
     
 
     public Jumbotron() {
         setRendererType(null); // this component renders itself
         Tooltip.addResourceFile();
     }
+    
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
@@ -81,5 +93,4 @@ public class Jumbotron extends UIComponentBase {
     public String getFamily() {
         return COMPONENT_FAMILY;
     }
-    
 }

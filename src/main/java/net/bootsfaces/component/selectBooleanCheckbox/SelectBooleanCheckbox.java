@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -29,6 +29,7 @@ import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.html.HtmlInputText;
 
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.component.ajax.IAJAXComponent;
 import net.bootsfaces.render.Tooltip;
 
@@ -40,6 +41,7 @@ import net.bootsfaces.render.Tooltip;
 		@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent("net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox")
 public class SelectBooleanCheckbox extends HtmlInputText implements net.bootsfaces.render.IHasTooltip, IAJAXComponent {
+	private String renderLabel = null;
 
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox";
 
@@ -51,7 +53,17 @@ public class SelectBooleanCheckbox extends HtmlInputText implements net.bootsfac
 			Arrays.asList("blur", "change", "valueChange", "click", "dblclick", "focus", "keydown", "keypress", "keyup",
 					"mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "select"));
 
-    /**
+	private Map<String, Object> attributes;
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
+	
+	/**
      * returns the subset of AJAX requests that are implemented by jQuery callback or other non-standard means
      * (such as the onclick event of b:tabView, which has to be implemented manually).
      * @return
@@ -747,7 +759,12 @@ public class SelectBooleanCheckbox extends HtmlInputText implements net.bootsfac
 	 *         set by the JSF file.
 	 */
 	public boolean isRenderLabel() {
-		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, true);
+		if (null != renderLabel) {
+			boolean defaultValue = Boolean.valueOf(renderLabel);
+			Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, defaultValue);
+			return (boolean) value;
+		}
+		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, false);
 		return (boolean) value;
 	}
 

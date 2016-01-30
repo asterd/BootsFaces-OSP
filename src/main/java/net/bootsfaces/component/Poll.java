@@ -1,5 +1,5 @@
 /**
- *  Copyright 2015 Stephan Rauh (http://www.beyondjava.net)
+ *  Copyright 2015-2016 Stephan Rauh (http://www.beyondjava.net)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -55,9 +55,17 @@ public class Poll extends HtmlCommandButton {
 	 * </p>
 	 */
 	public static final String COMPONENT_FAMILY = C.BSFCOMPONENT;
+	private Map<String, Object> attributes;
 
 	public Poll() {
 		setRendererType(null); // this component renders itself
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
 	}
 
 	public void decode(FacesContext context) {

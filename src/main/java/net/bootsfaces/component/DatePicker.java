@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -45,6 +45,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
 import net.bootsfaces.C;
+import net.bootsfaces.component.icon.Icon;
 import net.bootsfaces.component.icon.IconRenderer;
 import net.bootsfaces.listeners.AddResourcesListener;
 import net.bootsfaces.render.A;
@@ -96,6 +97,7 @@ public class DatePicker extends HtmlInputText {
 	 */
 	private String sdf;
 	private String mode;
+	private Map<String, Object> attributes;
 
 	public DatePicker() {
 		setRendererType(null); // this component renders itself
@@ -121,6 +123,12 @@ public class DatePicker extends HtmlInputText {
 	}
 
 	
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
 
 	@Override
 	public void decode(FacesContext fc) {
@@ -247,8 +255,11 @@ public class DatePicker extends HtmlInputText {
 				rw.startElement("div", this);
 				rw.writeAttribute("class", "input-group", "class");
 				if (mode.equals("icon-popup") || mode.equals("icon-toggle")) {
-					IconRenderer.encodeIcon(rw, this, "calendar", false, null, null, null, false, true, null, null, isDisabled);
-					
+					rw.startElement("span", this);
+					rw.writeAttribute("id", clientId + "_" + ADDON, "id");
+					rw.writeAttribute("class", "input-group-addon", "class");
+					IconRenderer.encodeIcon(rw, this, "calendar", false, null, null, null, false, null, null, isDisabled, true);
+					rw.endElement("span");
 				}
 			}
 		}
@@ -279,7 +290,12 @@ public class DatePicker extends HtmlInputText {
 
 		encodeJS(fc, rw, clientId, dpId);
 		if (mode.equals("popup-icon") || mode.equals("toggle-icon")) {
-			IconRenderer.encodeIcon(rw, this, "calendar", false, null, null, null, false, true, null, null, isDisabled);
+			rw.startElement("span", this);
+			rw.writeAttribute("id", clientId + "_" + ADDON, "id");
+			rw.writeAttribute("class", "input-group-addon", "class");
+			
+			IconRenderer.encodeIcon(rw, this, "calendar", false, null, null, null, false, null, null, isDisabled, true);
+			rw.endElement("span");
 		}
 
 		if (!inline && !mode.equals("popup")) {

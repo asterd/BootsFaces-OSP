@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -30,11 +30,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import net.bootsfaces.C;
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.render.A;
 import net.bootsfaces.render.Tooltip;
 
 @ResourceDependencies({
-	@ResourceDependency(library="bsf", name="css/core.css"),
+	@ResourceDependency(library="bsf", name="css/core.css", target = "head"),
 	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head"),
     @ResourceDependency(library="bsf", name="css/wells.css")
 })
@@ -49,11 +50,20 @@ public class Well extends UIComponentBase {
      * <p>The component family for this component.</p>
      */
     public static final String COMPONENT_FAMILY = C.BSFLAYOUT;
+	private Map<String, Object> attributes;
 
     public Well() {
         setRendererType(null); // this component renders itself
         Tooltip.addResourceFile();
     }
+    
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {

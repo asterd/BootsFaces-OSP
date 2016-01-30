@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -107,7 +107,7 @@ public class TabViewRenderer extends CoreRenderer {
 		final String hiddenInputFieldID = clientId.replace(":", "_") + "_activeIndex";
 		writer.writeAttribute("name", hiddenInputFieldID, "name");
 		writer.writeAttribute("id", hiddenInputFieldID, "id");
-		writer.writeAttribute("value", tabView.getActiveIndex(), "value");
+		writer.writeAttribute("value", "", "value");
 		writer.endElement("input");
 
 		writer.startElement("div", tabView);

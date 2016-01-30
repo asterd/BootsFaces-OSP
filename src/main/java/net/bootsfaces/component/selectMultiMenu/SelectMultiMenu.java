@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -19,11 +19,14 @@
 
 package net.bootsfaces.component.selectMultiMenu;
 
+import java.util.Map;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.html.HtmlInputText;
 
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.render.Tooltip;
 
 /** This class holds the attributes of &lt;b:selectMultiMenu /&gt;. */
@@ -38,12 +41,15 @@ import net.bootsfaces.render.Tooltip;
 
 @FacesComponent("net.bootsfaces.component.selectMultiMenu.SelectMultiMenu")
 public class SelectMultiMenu extends HtmlInputText implements net.bootsfaces.render.IHasTooltip {
+	private String renderLabel = null;
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.selectMultiMenu.SelectMultiMenu";
 	
 	public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
 	
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.selectMultiMenu.SelectMultiMenu";
+
+	private Map<String, Object> attributes;
 	
 	public SelectMultiMenu() {
 		
@@ -52,6 +58,13 @@ public class SelectMultiMenu extends HtmlInputText implements net.bootsfaces.ren
 		setRendererType(DEFAULT_RENDERER);
 	}
 	
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
@@ -701,7 +714,12 @@ tooltipPosition
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isRenderLabel() {
-		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.renderLabel, true);
+		if (null != renderLabel) {
+			boolean defaultValue = Boolean.valueOf(renderLabel);
+			Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, defaultValue);
+			return (boolean) value;
+		}
+		Boolean value = (Boolean) getStateHelper().eval(PropertyKeys.renderLabel, false);
 		return (boolean) value;
 	}
 	

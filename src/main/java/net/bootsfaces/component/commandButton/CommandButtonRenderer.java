@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *
  *  This file is part of BootsFaces.
  *
@@ -81,12 +81,6 @@ public class CommandButtonRenderer extends CoreRenderer {
 		writeAttribute(rw, "style", style, "style");
 
 		rw.writeAttribute("class", getStyleClasses(commandButton), "class");
-
-		String title = commandButton.getTitle();
-
-		if (title != null && title.length() > 0) {
-			rw.writeAttribute("title", title, "title");
-		}
 
 		if (commandButton.isDisabled()) {
 			rw.writeAttribute("disabled", "disabled", "disabled");

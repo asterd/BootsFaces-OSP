@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -32,6 +32,7 @@ import javax.faces.component.UICommand;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 
 import net.bootsfaces.C;
+import net.bootsfaces.component.AttributeMapWrapper;
 import net.bootsfaces.component.ajax.IAJAXComponent;
 import net.bootsfaces.listeners.AddResourcesListener;
 import net.bootsfaces.render.Tooltip;
@@ -53,11 +54,20 @@ public class Carousel extends UICommand implements net.bootsfaces.render.IHasToo
 
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.carousel.Carousel";
 
+	private Map<String, Object> attributes;
+
 	public Carousel() {
 		Tooltip.addResourceFile();
 		AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/jquery.js");
 		AddResourcesListener.addResourceToHeadButAfterJQuery(C.BSF_LIBRARY, "jq/ui/core.js");
 		setRendererType(DEFAULT_RENDERER);
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
 	}
 
 	public String getFamily() {

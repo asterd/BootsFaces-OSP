@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -23,6 +23,8 @@
  */
 package net.bootsfaces.component;
 
+import java.util.Map;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
@@ -35,7 +37,7 @@ import net.bootsfaces.C;
  */
 
 @ResourceDependencies({ 
-    @ResourceDependency(library = "bsf", name = "css/core.css"),
+    @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
 	@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent(C.NAVBARLINKS_COMPONENT_TYPE)
 public class NavBarLinks extends LinksContainer {
@@ -51,12 +53,20 @@ public class NavBarLinks extends LinksContainer {
     
     public static final String NAV="nav";
     public static final String NAVBAR="navbar";
+	private Map<String, Object> attributes;
 
     public NavBarLinks() {
         setRendererType(null); // this component renders itself
     }
     
-    /*
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
+	}
+
+	/*
      * <ul class="nav navbar-nav">
      * ...
      * </ul>

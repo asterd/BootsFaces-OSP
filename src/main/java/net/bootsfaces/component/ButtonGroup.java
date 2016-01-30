@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014 Riccardo Massera (TheCoder4.Eu)
+ *  Copyright 2014-2016 Riccardo Massera (TheCoder4.Eu)
  *  
  *  This file is part of BootsFaces.
  *  
@@ -19,6 +19,8 @@
 
 package net.bootsfaces.component;
 
+import java.util.Map;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
@@ -33,7 +35,7 @@ import net.bootsfaces.render.Tooltip;
  */
 
 @ResourceDependencies({ 
-	    @ResourceDependency(library = "bsf", name = "css/core.css"),
+	    @ResourceDependency(library = "bsf", name = "css/core.css", target = "head"),
 		@ResourceDependency(library = "bsf", name = "css/tooltip.css", target = "head") })
 @FacesComponent(C.BUTTONGROUP_COMPONENT_TYPE)
 public class ButtonGroup extends GenContainerDiv {
@@ -50,10 +52,18 @@ public class ButtonGroup extends GenContainerDiv {
 	 * </p>
 	 */
 	public static final String COMPONENT_FAMILY = C.BSFCOMPONENT;
+	private Map<String, Object> attributes;
 
 	public ButtonGroup() {
 		setRendererType(null); // this component renders itself
 		Tooltip.addResourceFile();
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		if (attributes == null)
+			attributes = new AttributeMapWrapper(this, super.getAttributes());
+		return attributes;
 	}
 
 	/*

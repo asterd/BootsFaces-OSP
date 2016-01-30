@@ -1,5 +1,5 @@
 /**
- *  Copyright 2015 Stephan Rauh, http://www.beyondjava.net
+ *  Copyright 2015-2016 Stephan Rauh, http://www.beyondjava.net
  *  
  *  This file is part of BootsFaces.
  *  
@@ -131,7 +131,7 @@ public class AddResourcesListener implements SystemEventListener {
 			Resource themeResource = rh.createResource("css/" + theme + "/" + filename, C.BSF_LIBRARY);
 
 			if (themeResource == null) {
-				throw new FacesException("Error loading theme, cannot find \"" + "css/" + filename + "\" resource of \""
+				throw new FacesException("Error loading theme, cannot find \"" + "css/" + theme + "/" + filename + "\" resource of \""
 						+ C.BSF_LIBRARY + "\" library");
 			} else {
 				UIOutput output = new UIOutput();
@@ -213,16 +213,16 @@ public class AddResourcesListener implements SystemEventListener {
 				name = name.toLowerCase();
 				if ((name.contains("font-awesome") || name.contains("fontawesome")) && name.endsWith("css"))
 					useCDNImportForFontAwesome = false;
-				if (name.contains("jquery-ui") && name.endsWith(".js")) {
+				if (name.startsWith("jquery-ui") && name.endsWith(".js")) {
 					// do nothing - the if is needed to avoid confusion between
 					// jQuery and jQueryUI
 					loadJQueryUI = false;
-				} else if (name.contains("jquery") && name.endsWith(".js")) {
+				} else if (name.startsWith("jquery") && name.endsWith(".js")) {
 					loadJQuery = false;
 				}
 			}
 		}
-
+                
 		// Font Awesome
 		if (useCDNImportForFontAwesome) { // !=null && usefa.equals(C.TRUE)) {
 			InternalFALink output = new InternalFALink();
@@ -311,7 +311,14 @@ public class AddResourcesListener implements SystemEventListener {
 				}
 			}
 		}
-
+                // Glyphicons
+                UIOutput goutput = new UIOutput();
+                goutput.setRendererType("javax.faces.resource.Stylesheet");
+                goutput.getAttributes().put("name", "css/icons.css");
+                //goutput.getAttributes().put("name", "css/" + theme + "/icons.css");
+                goutput.getAttributes().put("library", C.BSF_LIBRARY);
+                goutput.getAttributes().put("target", "head");
+                root.addComponentResource(context, goutput, "head");
 	}
 
 	private void addResourceIfNecessary(UIViewRoot root, FacesContext context, InternalIE8CompatiblityLinks output) {
@@ -497,10 +504,12 @@ public class AddResourcesListener implements SystemEventListener {
 			root.removeComponentResource(context, c);
 		}
 		for (UIComponent c : first) {
-			root.getComponentResources(context, "head").add(c);
+			root.addComponentResource(context, c, "head");
+//			root.getComponentResources(context, "head").add(c);
 		}
 		for (UIComponent c : middle) {
 			root.addComponentResource(context, c, "head");
+//			root.addComponentResource(context, c, "head");
 		}
 		for (UIComponent c : resources) {
 			root.addComponentResource(context, c, "head");
