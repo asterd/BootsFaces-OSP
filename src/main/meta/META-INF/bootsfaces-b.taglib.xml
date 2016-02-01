@@ -1424,97 +1424,97 @@
     <component>
       <component-type>net.bootsfaces.component.modal.Modal</component-type>
     </component>
-		
-	  <attribute>
-	    <description><![CDATA[By default, you can close a modal dialog by clicking somewhere outside the modal. Set backdrop="false" to disable this feature.]]></description>
-	    <name>backdrop</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[If true, the modal dialog can be closed by clicking the small cross in the upper right corner]]></description>
-	    <name>closable</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape="false" to disable this feature.]]></description>
-	    <name>close-on-escape</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape="false" to disable this feature.]]></description>
-	    <name>closeOnEscape</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[content-class is optional: if specified, the content will be displayed with this specific class]]></description>
-	    <name>content-class</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[content-class is optional: if specified, the content will be displayed with this specific class]]></description>
-	    <name>contentClass</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Inline style of the content area.]]></description>
-	    <name>content-style</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Inline style of the content area.]]></description>
-	    <name>contentStyle</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-	    <name>id</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-	    <name>rendered</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Modal's size. Possible values modal-sm, modal-lg]]></description>
-	    <name>size</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Inline style]]></description>
-	    <name>style</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Style class of this element.]]></description>
-	    <name>style-class</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Style class of this element.]]></description>
-	    <name>styleClass</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Bold title displayed in the modal's header.]]></description>
-	    <name>title</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
+
+    <attribute>
+      <description><![CDATA[By default, you can close a modal dialog by clicking somewhere outside the modal. Set backdrop="false" to disable this feature.]]></description>
+      <name>backdrop</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[If true, the modal dialog can be closed by clicking the small cross in the upper right corner]]></description>
+      <name>closable</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape="false" to disable this feature.]]></description>
+      <name>close-on-escape</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape="false" to disable this feature.]]></description>
+      <name>closeOnEscape</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[content-class is optional: if specified, the content will be displayed with this specific class]]></description>
+      <name>content-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[content-class is optional: if specified, the content will be displayed with this specific class]]></description>
+      <name>contentClass</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Inline style of the content area.]]></description>
+      <name>content-style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Inline style of the content area.]]></description>
+      <name>contentStyle</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+      <name>id</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+      <name>rendered</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Modal's size. Possible values modal-sm, modal-lg]]></description>
+      <name>size</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Inline style]]></description>
+      <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>style-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>styleClass</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Bold title displayed in the modal's header.]]></description>
+      <name>title</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
 
   <tag>
@@ -2054,7 +2054,7 @@
     <component>
       <component-type>net.bootsfaces.component.buttonGroup.ButtonGroup</component-type>
     </component>
-    
+
     <attribute>
       <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
       <name>binding</name>
@@ -2182,7 +2182,7 @@
     <component>
       <component-type>net.bootsfaces.component.buttonToolbar.ButtonToolbar</component-type>
     </component>
-    
+
     <attribute>
       <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
       <name>binding</name>
@@ -3276,20 +3276,9 @@
   <tag>
     <tag-name>thumbnail</tag-name>
     <component>
-      <component-type>net.bootsfaces.component.Thumbnail</component-type>
+      <component-type>net.bootsfaces.component.thumbnail.Thumbnail</component-type>
     </component>
-    <attribute>
-      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-      <name>id</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-      <name>rendered</name>
-      <required>false</required>
-      <type>java.lang.Boolean</type>
-    </attribute>
+
     <attribute>
       <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
       <name>binding</name>
@@ -3297,8 +3286,32 @@
       <type>javax.faces.component.UIComponent</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
+      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+      <name>id</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+      <name>rendered</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Inline CSS of the tab.]]></description>
+      <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of the div surrounding the tab pane.]]></description>
+      <name>style-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of the div surrounding the tab pane.]]></description>
+      <name>styleClass</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3309,58 +3322,105 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
       <required>false</required>
       <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
+      <required>false</required>
+      <type>Integer</type>
     </attribute>
     <attribute>
       <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay-hide</name>
       <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
       <type>java.lang.String</type>
     </attribute>
-    <!-- put more tooltip attributes here -->
-
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
   <tag>
     <tag-name>container</tag-name>
     <component>
-      <component-type>net.bootsfaces.layout.Container</component-type>
+      <component-type>net.bootsfaces.component.container.Container</component-type>
     </component>
+
     <attribute>
       <description><![CDATA[Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content).]]></description>
       <name>dir</name>
       <required>false</required>
       <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-      <name>id</name>
-      <required>false</required>
-      <type>java.lang.String</type>
-    </attribute>
-    <attribute>
-      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-      <name>rendered</name>
-      <required>false</required>
-      <type>java.lang.Boolean</type>
     </attribute>
     <attribute>
       <description><![CDATA[Boolean value default is false; when set to true, the container will be "fluid": a full width container, spanning the entire width of the viewport.]]></description>
       <name>fluid</name>
       <required>false</required>
-      <type>java.lang.Boolean</type>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+      <name>id</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+      <name>rendered</name>
+      <required>false</required>
+      <type>Boolean</type>
     </attribute>
     <attribute>
       <description><![CDATA[Inline style of the input element.]]></description>
       <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>style-class</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3371,14 +3431,20 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
+      <description><![CDATA[The text of the tooltip.]]></description>
+      <name>tooltip</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The text of the tooltip.]]></description>
-      <name>tooltip</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3386,28 +3452,58 @@
       <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay</name>
       <required>false</required>
-      <type>java.lang.String</type>
+      <type>Integer</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
       <required>false</required>
-      <type>java.lang.String</type>
+      <type>Integer</type>
     </attribute>
     <attribute>
       <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay-hide</name>
       <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
       <type>java.lang.String</type>
     </attribute>
-    <!-- put more tooltip attributes here -->
-
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
+
   <tag>
     <tag-name>row</tag-name>
     <component>
-      <component-type>net.bootsfaces.layout.Row</component-type>
+      <component-type>net.bootsfaces.component.row.Row</component-type>
     </component>
+
     <attribute>
       <description><![CDATA[Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content).]]></description>
       <name>dir</name>
@@ -3424,11 +3520,17 @@
       <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
       <name>rendered</name>
       <required>false</required>
-      <type>java.lang.Boolean</type>
+      <type>Boolean</type>
     </attribute>
     <attribute>
       <description><![CDATA[Inline style of the input element.]]></description>
       <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>style-class</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3439,14 +3541,20 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
+      <description><![CDATA[The text of the tooltip.]]></description>
+      <name>tooltip</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The text of the tooltip.]]></description>
-      <name>tooltip</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3454,22 +3562,52 @@
       <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay</name>
       <required>false</required>
-      <type>java.lang.String</type>
+      <type>Integer</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
       <required>false</required>
-      <type>java.lang.String</type>
+      <type>Integer</type>
     </attribute>
     <attribute>
       <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay-hide</name>
       <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
       <type>java.lang.String</type>
     </attribute>
-    <!-- put more tooltip attributes here -->
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
+
 
   <tag>
     <tag-name>column</tag-name>
@@ -3477,102 +3615,102 @@
       <component-type>net.bootsfaces.component.column.Column</component-type>
     </component>
 
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>col-lg</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>colLg</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>col-md</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>colMd</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>col-sm</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>colSm</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>col-xs</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>colXs</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>large-screen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>largeScreen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>medium-screen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>mediumScreen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>small-screen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>smallScreen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>tiny-screen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	  	<description><![CDATA[Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
-	  	<name>tinyScreen</name>
-	  	<required>false</required>
-	  	<type>java.lang.String</type>
-	  </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>col-lg</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>colLg</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>col-md</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>colMd</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>col-sm</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>colSm</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>col-xs</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>colXs</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>large-screen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>largeScreen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>medium-screen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>mediumScreen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>small-screen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>smallScreen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>tiny-screen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally by followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.]]></description>
+      <name>tinyScreen</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
     <attribute>
       <description><![CDATA[Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content).]]></description>
       <name>dir</name>
@@ -3758,8 +3896,9 @@
   <tag>
     <tag-name>jumbotron</tag-name>
     <component>
-      <component-type>net.bootsfaces.layout.Jumbotron</component-type>
+      <component-type>net.bootsfaces.component.jumbotron.Jumbotron</component-type>
     </component>
+
     <attribute>
       <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
       <name>id</name>
@@ -3770,11 +3909,23 @@
       <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
       <name>rendered</name>
       <required>false</required>
-      <type>java.lang.Boolean</type>
+      <type>Boolean</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
+      <description><![CDATA[Inline CSS of the tab.]]></description>
+      <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of the div surrounding the tab pane.]]></description>
+      <name>style-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of the div surrounding the tab pane.]]></description>
+      <name>styleClass</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3785,31 +3936,72 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
       <required>false</required>
       <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
+      <required>false</required>
+      <type>Integer</type>
     </attribute>
     <attribute>
       <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay-hide</name>
       <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
       <type>java.lang.String</type>
     </attribute>
-    <!-- put more tooltip attributes here -->
-
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
   <tag>
     <tag-name>well</tag-name>
     <component>
-      <component-type>net.bootsfaces.layout.Well</component-type>
+      <component-type>net.bootsfaces.component.well.Well</component-type>
     </component>
+
     <attribute>
       <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
       <name>id</name>
@@ -3820,7 +4012,7 @@
       <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
       <name>rendered</name>
       <required>false</required>
-      <type>java.lang.Boolean</type>
+      <type>Boolean</type>
     </attribute>
     <attribute>
       <description><![CDATA[Size can be large or small and controls padding and rounded corners.]]></description>
@@ -3829,20 +4021,20 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Inline style of the input element.]]></description>
+      <description><![CDATA[Inline CSS of the tab.]]></description>
       <name>style</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Style class of the input element.]]></description>
-      <name>styleClass</name>
+      <description><![CDATA[Style class of the div surrounding the tab pane.]]></description>
+      <name>style-class</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-      <name>tooltip-position</name>
+      <description><![CDATA[Style class of the div surrounding the tab pane.]]></description>
+      <name>styleClass</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
@@ -3853,260 +4045,300 @@
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
       <required>false</required>
       <type>java.lang.String</type>
     </attribute>
     <attribute>
-      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-      <name>tooltip-delay-show</name>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
       <required>false</required>
       <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
+      <required>false</required>
+      <type>Integer</type>
     </attribute>
     <attribute>
       <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
       <name>tooltip-delay-hide</name>
       <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
       <type>java.lang.String</type>
     </attribute>
-    <!-- put more tooltip attributes here -->
-
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
   <tag>
     <tag-name>datepicker</tag-name>
     <component>
       <component-type>net.bootsfaces.component.datepicker.Datepicker</component-type>
     </component>
-		
-	  <attribute>
-	    <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-	    <name>binding</name>
-	    <required>false</required>
-	    <type>javax.faces.component.UIComponent</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if month selector should be shown.]]></description>
-	    <name>change-month</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if month selector should be shown.]]></description>
-	    <name>changeMonth</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if year selector should be shown.]]></description>
-	    <name>change-year</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if year selector should be shown.]]></description>
-	    <name>changeYear</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Format of the date. I.e. MM/dd/yyyy for the anglo-saxon date format or dd.MM.yyyy for the date format used widely in Europe.]]></description>
-	    <name>dateFormat</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if the button is disabled.]]></description>
-	    <name>disabled</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Set the first day of the week: Sunday is 0, Monday is 1, etc.]]></description>
-	    <name>first-day</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Set the first day of the week: Sunday is 0, Monday is 1, etc.]]></description>
-	    <name>firstDay</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-	    <name>id</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale.]]></description>
-	    <name>lang</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Locale setting.]]></description>
-	    <name>locale</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Restricts the legal date range.]]></description>
-	    <name>minDate</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Restricts the legal date range.]]></description>
-	    <name>maxDate</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Controls how the Calendar is showed, can be inline or popup. Default is popup.]]></description>
-	    <name>mode</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Number of months to show.]]></description>
-	    <name>number-of-months</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Number of months to show.]]></description>
-	    <name>numberOfMonths</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The placeholder attribute shows text in a field until the field is focused upon, then hides the text.]]></description>
-	    <name>placeholder</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-	    <name>rendered</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if row Buttons to the bottom of calendar should be shown.]]></description>
-	    <name>show-button-panel</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if row Buttons to the bottom of calendar should be shown.]]></description>
-	    <name>showButtonPanel</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if Week number should be shown.]]></description>
-	    <name>show-week</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Boolean value to specify if Week number should be shown.]]></description>
-	    <name>showWeek</name>
-	    <required>false</required>
-	    <type>Boolean</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Inline style of the input element.]]></description>
-	    <name>style</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Style class of this element.]]></description>
-	    <name>style-class</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Style class of this element.]]></description>
-	    <name>styleClass</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The text of the tooltip.]]></description>
-	    <name>tooltip</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
-	    <name>tooltip-container</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
-	    <name>tooltipContainer</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-	    <name>tooltip-delay</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-	    <name>tooltipDelay</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-	    <name>tooltip-delay-hide</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-	    <name>tooltipDelayHide</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-	    <name>tooltip-delay-show</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
-	    <name>tooltipDelayShow</name>
-	    <required>false</required>
-	    <type>Integer</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-	    <name>tooltip-position</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
-	    <name>tooltipPosition</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
-	  <attribute>
-	    <description><![CDATA[Value.]]></description>
-	    <name>value</name>
-	    <required>false</required>
-	    <type>java.lang.String</type>
-	  </attribute>
+
+    <attribute>
+      <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+      <name>binding</name>
+      <required>false</required>
+      <type>javax.faces.component.UIComponent</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if month selector should be shown.]]></description>
+      <name>change-month</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if month selector should be shown.]]></description>
+      <name>changeMonth</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if year selector should be shown.]]></description>
+      <name>change-year</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if year selector should be shown.]]></description>
+      <name>changeYear</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Format of the date. I.e. MM/dd/yyyy for the anglo-saxon date format or dd.MM.yyyy for the date format used widely in Europe.]]></description>
+      <name>dateFormat</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if the button is disabled.]]></description>
+      <name>disabled</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Set the first day of the week: Sunday is 0, Monday is 1, etc.]]></description>
+      <name>first-day</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Set the first day of the week: Sunday is 0, Monday is 1, etc.]]></description>
+      <name>firstDay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+      <name>id</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale.]]></description>
+      <name>lang</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Locale setting.]]></description>
+      <name>locale</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Restricts the legal date range.]]></description>
+      <name>minDate</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Restricts the legal date range.]]></description>
+      <name>maxDate</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Controls how the Calendar is showed, can be inline or popup. Default is popup.]]></description>
+      <name>mode</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Number of months to show.]]></description>
+      <name>number-of-months</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Number of months to show.]]></description>
+      <name>numberOfMonths</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The placeholder attribute shows text in a field until the field is focused upon, then hides the text.]]></description>
+      <name>placeholder</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+      <name>rendered</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if row Buttons to the bottom of calendar should be shown.]]></description>
+      <name>show-button-panel</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if row Buttons to the bottom of calendar should be shown.]]></description>
+      <name>showButtonPanel</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if Week number should be shown.]]></description>
+      <name>show-week</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Boolean value to specify if Week number should be shown.]]></description>
+      <name>showWeek</name>
+      <required>false</required>
+      <type>Boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Inline style of the input element.]]></description>
+      <name>style</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>style-class</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Style class of this element.]]></description>
+      <name>styleClass</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The text of the tooltip.]]></description>
+      <name>tooltip</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltip-container</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.]]></description>
+      <name>tooltipContainer</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelay</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-hide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayHide</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltip-delay-show</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+      <name>tooltipDelayShow</name>
+      <required>false</required>
+      <type>Integer</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltip-position</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+      <name>tooltipPosition</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[Value.]]></description>
+      <name>value</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
   </tag>
   <tag>
     <tag-name>inputText</tag-name>
@@ -5706,7 +5938,7 @@
     <component>
       <component-type>net.bootsfaces.component.tabView.TabView</component-type>
     </component>
-    
+
     <attribute>
       <description><![CDATA[Optional attribute to define which tab is active initially.]]></description>
       <name>active-index</name>
@@ -5889,7 +6121,7 @@
     <component>
       <component-type>net.bootsfaces.component.tab.Tab</component-type>
     </component>
-    
+
     <attribute>
       <description><![CDATA[Activates AJAX. The default value is false (no AJAX).]]></description>
       <name>ajax</name>
