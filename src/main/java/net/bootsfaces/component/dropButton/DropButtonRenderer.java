@@ -57,56 +57,55 @@ public class DropButtonRenderer extends CoreRenderer {
 		DropButton dropButton = (DropButton) component;
 		ResponseWriter rw = context.getResponseWriter();
 
+		rw.startElement("div", dropButton);
+		String clientId = dropButton.getClientId(context);
+		rw.writeAttribute("id", clientId, "id");
+		rw.writeAttribute("name", clientId, "name");
 		String styleClass = getStyleclass(dropButton);
+		rw.writeAttribute("class", styleClass, "class");
+		writeAttribute(rw, "style", dropButton.getStyle(), "style");
+		Tooltip.generateTooltip(context, dropButton, rw);
+
+		String ts = "btn btn-";
+		String look = dropButton.getLook();
+		if (look != null) {
+			ts += look + " ";
+		} else {
+			ts += "default ";
+		}
+		String size = dropButton.getSize();
+		if (size != null) {
+			ts += "btn-" + size + " ";
+		}
+		String value = (String) dropButton.getAttributes().get("value");
+
 		{
-			rw.startElement("div", dropButton);
-			String clientId = dropButton.getClientId(context);
-			rw.writeAttribute("id", clientId, "id");
-			rw.writeAttribute("name", clientId, "name");
-			rw.writeAttribute("class", styleClass, "class");
-			Tooltip.generateTooltip(context, dropButton, rw);
-
-			String ts = "btn btn-";
-			String look = dropButton.getLook();
-			if (look != null) {
-				ts += look + " ";
+			rw.startElement("button", dropButton);
+			rw.writeAttribute("id", "dtL" + clientId, "id");
+			rw.writeAttribute("class", ts + "dropdown-toggle", "class");
+			if ("button".equals("button")) {
+				rw.writeAttribute("type", "button", null);
 			} else {
-				ts += "default ";
+				rw.writeAttribute("href", "#", null);
 			}
-			String size = dropButton.getSize();
-			if (size != null) {
-				ts += "btn-" + size + " ";
-			}
-			String value = (String)dropButton.getAttributes().get("value");
+			rw.writeAttribute("role", "button", null);
+			rw.writeAttribute("data-toggle", "dropdown", null);
 
+			// Encode value
+			rw.writeText(value, null);
+			// Encode Caret
 			{
-				rw.startElement("button", dropButton);
-				rw.writeAttribute("id", "dtL" + clientId, "id");
-				rw.writeAttribute("class", ts + "dropdown-toggle", "class");
-				if ("button".equals("button")) {
-					rw.writeAttribute("type", "button", null);
-				} else {
-					rw.writeAttribute("href", "#", null);
-				}
-				rw.writeAttribute("role", "button", null);
-				rw.writeAttribute("data-toggle", "dropdown", null);
-
-				// Encode value
-				rw.writeText(value, null);
-				// Encode Caret
-				{
-					rw.startElement("b", dropButton);
-					rw.writeAttribute("class", "caret", "class");
-					rw.endElement("b");
-				}
-				rw.endElement("button");
+				rw.startElement("b", dropButton);
+				rw.writeAttribute("class", "caret", "class");
+				rw.endElement("b");
 			}
-			{
-				rw.startElement("ul", dropButton);
-				rw.writeAttribute("class", "dropdown-menu", "class");
-				rw.writeAttribute("role", "menu", null);
-				rw.writeAttribute("aria-labelledby", "dtL" + clientId, null);
-			}
+			rw.endElement("button");
+		}
+		{
+			rw.startElement("ul", dropButton);
+			rw.writeAttribute("class", "dropdown-menu", "class");
+			rw.writeAttribute("role", "menu", null);
+			rw.writeAttribute("aria-labelledby", "dtL" + clientId, null);
 		}
 	}
 
@@ -115,6 +114,9 @@ public class DropButtonRenderer extends CoreRenderer {
 		String styleClass = "btn-group";
 		if (direction.equals("up")) {
 			styleClass += " drop" + direction;
+		}
+		if (dropButton.getStyleClass() != null) {
+			styleClass += " " + dropButton.getStyleClass();
 		}
 		return styleClass;
 	}

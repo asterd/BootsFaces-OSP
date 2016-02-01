@@ -461,6 +461,8 @@ widget dropButton
     look                                                                   "Look of the Button, can be primary, info, success, warning, danger. If not specified, a standard gray button will be rendered."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "The size of the Button.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    style                                                                  "Inline style"
+    style-class                                                            "CSS style class"
     tooltip                                                                "The text of the tooltip."
     tooltip-container    default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
     tooltip-delay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
